@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        ISMS_RELEASE {
+            keyAlias 'ISMS'
+            keyPassword '53#falls'
+            storeFile file('C:/tieneAS/Funguo/igotthaISMS.jks')
+            storePassword '53#falls'
+        }
+        ISMS_DEBUG {
+            keyAlias 'ISMS'
+            keyPassword '53#falls'
+            storeFile file('C:/tieneAS/Funguo/igotthaISMS.jks')
+            storePassword '53#falls'
+        }
+    }
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "com.servir.invasivespecies"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 5
+        versionName "ISMS_5_05012017"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.ISMS_RELEASE
+        }
+
+        debug {
+            signingConfig signingConfigs.ISMS_DEBUG
+            //debuggable true
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.google.android.gms:play-services-location:9.6.0'
+    compile 'com.google.android.gms:play-services-maps:9.6.0'
+    compile 'org.apache.httpcomponents:httpcomponents-client:4.5.2'
+    compile 'org.apache.httpcomponents:httpcomponents-core:4.4.5'
+    testCompile 'junit:junit:4.12'
+    compile 'com.kishan.askpermission:askpermission:1.0.3'
+    compile 'com.google.maps.android:android-maps-utils:0.5'
+    compile 'com.google.android.gms:play-services-appindexing:9.6.0'
+}

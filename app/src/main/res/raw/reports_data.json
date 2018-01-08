@@ -1,0 +1,7 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature", "properties": { "ABUDANCE": "Scattered Plants", "REPORT_TIME": "2017-03-22 12:17:21", "INFESTED_AREA": "12 Square Feet", "HABITAT": "Edge: Lake", "GROSS_AREA": "14 Square Feet", "CANOPY_CLOSURE": "Moderate ( 5.1% to 25% )", "IMAGE_NAME": "IS_Steve Firsake_0717534281_2017_03_22_12_14_22_invspc.jpg", "COMMENTS": "try 2", "OWNERSHIP": "Public Land", "AREA_ACCESSIBILITY": "Accessible", "SPECIES": "hyacinth and prosposis" }, "geometry": { "type": "Point", "coordinates": [ 36.8944518, -1.22136 ] } },
+    { "type": "Feature", "properties": { "ABUDANCE": "Dense Monoculture", "REPORT_TIME": "2017-03-22 12:33:14", "INFESTED_AREA": "10 Hectares", "HABITAT": "Edge: Lake", "GROSS_AREA": "45 Square Feet", "CANOPY_CLOSURE": "Low ( 1.0% to 5.0% )", "IMAGE_NAME": "IS_Steve Firsake_0717534281_2017_03_22_12_32_15_invspc.jpg", "COMMENTS": "try 3", "OWNERSHIP": "Unknown", "AREA_ACCESSIBILITY": "Accessible", "SPECIES": "Opuntia Species" }, "geometry": { "type": "Point", "coordinates": [ 36.8944518, -1.22136 ] } }
+  ]
+}

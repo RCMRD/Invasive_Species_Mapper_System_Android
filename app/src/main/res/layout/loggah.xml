@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dodok2"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    >
+
+
+    <ImageView
+        android:id="@+id/imgga"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/splaa"
+        />
+
+    <TextView
+        android:id="@+id/ttl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#66000000"
+        android:text="User Login"
+        android:layout_below="@+id/imgga"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+
+
+    <ScrollView
+        android:id="@+id/scrolli"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       >
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/textwan"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Organization"/>
+
+
+
+        <Spinner
+            android:id="@+id/logorg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textwan"
+            android:layout_marginTop="5dp"
+            android:layout_alignLeft="@+id/textwan"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:entries="@array/torgs"
+            android:prompt="@string/maneno" />
+
+        <EditText
+            android:id="@+id/logorg2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Specify"
+            android:enabled="false"
+            android:visibility="gone"
+            android:layout_alignLeft="@+id/textwan"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/logorg"
+            android:inputType="text"
+            android:ems="10" >
+
+        </EditText>
+
+
+        <TextView
+            android:id="@+id/textorg"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/logorg2"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Conservancy"/>
+
+
+
+        <Spinner
+            android:id="@+id/logcon"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textorg"
+            android:layout_marginTop="5dp"
+            android:layout_alignLeft="@+id/textwan"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:entries="@array/tcons"
+            android:prompt="@string/maneno" />
+
+        <EditText
+            android:id="@+id/logcon2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Specify"
+            android:enabled="false"
+            android:visibility="gone"
+            android:layout_alignLeft="@+id/textwan"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/logcon"
+            android:inputType="text"
+            android:ems="10" >
+
+        </EditText>
+
+
+            <TextView
+                android:id="@+id/textView1a"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/logcon2"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="E-mail Address" />
+
+            <EditText
+                android:id="@+id/logemail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/emailad"
+                android:layout_alignLeft="@+id/textView1a"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/textView1a"
+                android:inputType="textEmailAddress"
+                android:ems="10" >
+            </EditText>
+
+
+
+    <TextView
+        android:id="@+id/textView2a"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/logemail"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/logpass"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_alignLeft="@+id/textView2a"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textView2a"
+        android:inputType="textPassword"
+        android:ems="10" >
+
+    </EditText>
+
+
+   <!-- <Button
+        android:id="@+id/logingia"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/logpass"
+        android:textAllCaps="false"
+        android:background="@drawable/comlinee"
+        android:text="Sign in"
+        android:textColor="@android:color/background_light" />-->
+
+
+
+
+   <!-- <TextView
+        android:id="@+id/logreg"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/logingia"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000"
+        android:onClick="onClick_su"
+        android:visibility="gone"
+        android:clickable="true"
+        android:text="Register" />
+
+    <TextView
+        android:id="@+id/logforgot"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/logreg"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick_fd"
+        android:visibility="gone"
+        android:clickable="true"
+        android:textColor="#000000"
+        android:text="Forgot log in details?" />-->
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/logreg"
+            android:layout_width="100dp"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/comlinee"
+            android:textColor="@android:color/background_light"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:layout_margin="10dp"
+            android:text="Register"
+            />
+
+        <Button
+            android:id="@+id/logingia"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:layout_width="100dp"
+            android:background="@drawable/comlinee"
+            android:layout_alignParentRight="true"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:layout_height="wrap_content"
+            android:text="Sign in" />
+
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+
+
