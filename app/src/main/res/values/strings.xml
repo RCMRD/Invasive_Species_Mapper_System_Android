@@ -46,10 +46,15 @@
     <string-array name="t3">
         <item>	SELECT	</item>
         <item>Acacia Reficiens</item>
-        <item>Opuntia Species</item>
         <item>Lantana Camara</item>
-        <item>Prosopis Species</item>
         <item>Water Hyacinth</item>
+        <item>Chromolaena Odorata </item>
+        <item>Opuntia Stricta</item>
+        <item>Parthenium Hysterophorus </item>
+        <item>Prosopis Juliflora Species</item>
+        <item>Tithonia Diversifolia Species</item>
+        <item>Opuntia Species</item>
+        <item>Prosopis Species</item>
         <item>Other</item>
     </string-array>
 
@@ -57,6 +62,7 @@
         <item>	SELECT	</item>
         <item>Northern Rangelands Trust</item>
         <item>Laikipia Wildlife Forum</item>
+        <item>Maasai Mara Game Reserve</item>
         <item>Other</item>
     </string-array>
 
@@ -86,6 +92,27 @@
         <item>	Shurr	</item>
         <item>	Songa	</item>
         <item>	West Gate	</item>
+
+        <item>	Naikarra	</item>
+        <item>	Talek	</item>
+        <item>	Siana	</item>
+        <item>	Ol Kinyei	</item>
+        <item>	Naboisho	</item>
+        <item>	Kerinkani	</item>
+        <item>	Maji Moto	</item>
+        <item>	Olare Orok	</item>
+        <item>	Motorogi	</item>
+        <item>	Lemek	</item>
+        <item>	Olorien	</item>
+        <item>	Mara North	</item>
+        <item>	Ol Chorro	</item>
+        <item>	Enonkishu	</item>
+        <item>	Kimintet	</item>
+        <item>	Mara Triangle	</item>
+        <item>	Maasai Mara NR	</item>
+        <item>	Olkiramatian	</item>
+        <item>	Shompole	</item>
+
         <item>Other</item>
     </string-array>
 
