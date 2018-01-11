@@ -3,10 +3,19 @@ package com.servir.invasivespecies;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import android.*;
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Dialog;
 import android.content.Context;
@@ -20,6 +29,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -60,6 +70,8 @@ public class Colecta extends AppCompatActivity {
 	RadioButton neww, prevv; 
 	String picnm = "";
 	String lepic;
+    Context context = this;
+    String naniask = "";
     String lepicnm;
     File f;
     String taken = "nope";
@@ -70,8 +82,11 @@ public class Colecta extends AppCompatActivity {
     String lepicpath;
 	ImageView sceneimage;
 	private final static int PICTURE_STUFF = 1;
-		
-	@Override
+    private final static int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 13;
+    private Uri fileUri;
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kolek);
@@ -79,6 +94,12 @@ public class Colecta extends AppCompatActivity {
 
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
+        if (Build.VERSION.SDK_INT < 23) {
+
+        }else {
+            reqPermission("top");
+        }
 
 		rudi = (Button) findViewById (R.id.backo);
         tuma = (Button) findViewById (R.id.doneo);
@@ -201,31 +222,32 @@ public class Colecta extends AppCompatActivity {
 	    	
 	    	public void onClick(View view){
 
-				if (ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-						ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-						ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||
-						ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED ||
-						ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-						ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
-						ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED ||
-						ContextCompat.checkSelfPermission(Colecta.this, android.Manifest.permission.RECEIVE_BOOT_COMPLETED) != PackageManager.PERMISSION_GRANTED
-						) {
-					Toast.makeText(Colecta.this, "Please note that you did not accept app permissions to access the camera", Toast.LENGTH_LONG ).show();
+				
+                if (Build.VERSION.SDK_INT < 23) {
+                    PigaPicha();
+                } else {
+
+                    if (
+                            ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                                    ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED &&
+                                    ContextCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                                    ContextCompat.checkSelfPermission(context, android.Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
+
+                            ) {
+
+                        PigaPicha();
+
+                    } else {
+
+                        reqPermission("anaingia");
+
+                    }
 
 
-				}else {
+                }
 
-					try {
 
-						String imagepathos = Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/";
-						Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-						f = new File(imagepathos, "temp.jpg");
-						intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-						startActivityForResult(intent, PICTURE_STUFF);
-					} catch (Exception x) {
 
-					}
-				}
 	    	       }
 	      });
        
@@ -440,91 +462,279 @@ public class Colecta extends AppCompatActivity {
 		mbott.show();
 	}
 
-	 private void saveImage(Bitmap finalBitmap) {
-         String root = Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/invspc";
- 
-         File myDir = new File(root);
-         
 
-         if (!myDir.exists()) {
-         	myDir.mkdirs();
-         }
-         
-          
-         picnm = rdatno + "_invspc.jpg";
-		 Log.e("aaaaaaaaa", rdatno);
-         File file = new File(myDir, picnm);
+    private void PigaPicha() {
 
-         if (file.exists()) {
-			 file.delete();
-		 }
+        String tempopic = Environment.getExternalStorageDirectory().getAbsolutePath() + "/IMGISMS";
 
-         try {
-             FileOutputStream out = new FileOutputStream(file);
-             finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-             out.flush();
-             out.close();
-             
-             taken = "yap";
-             erer = 1;
-
-			 if (file.exists()) {
-				 Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-				 sceneimage.setImageBitmap(bitmap);
-				 lepicpath = file.getAbsolutePath();
-			 }
-
-
-             
-             }
-         catch (Exception e) {
-        	 Toast.makeText(Colecta.this, "Camera error, take photograph again.", Toast.LENGTH_LONG ).show();
-             e.printStackTrace();
-         }
-
-         // Tell the media scanner about the new file so that it is
-         // immediately available to the user.
-         MediaScannerConnection.scanFile(this, new String[] { file.toString() }, null,
-                 new MediaScannerConnection.OnScanCompletedListener() {
-                     public void onScanCompleted(String path, Uri uri) {
-                         
-                     }
-         });
-
-       
-     }
-     
-
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-		 if (requestCode==PICTURE_STUFF && resultCode == RESULT_OK){
+        if (Build.VERSION.SDK_INT < 23) {
 
 
 
-				Bitmap bitmap;
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            f = new File(tempopic, "temp.jpg");
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+            startActivityForResult(intent, PICTURE_STUFF);
 
-				BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-			    bitmapOptions.inJustDecodeBounds= false;
-				bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
-				MediaStore.Images.Media.insertImage(getContentResolver(),
-						bitmap,
-						String.valueOf(System.currentTimeMillis()),
-						"Description");
-				saveImage(bitmap);
+        } else {
 
-				String root2 = Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/";
-				File myDir2 = new File(root2);
-				File file2 = new File(myDir2, "temp.jpg");
-				if (file2.exists()){
-					file2.delete();
-				}
+            try {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", createImageFile()));
+                startActivityForResult(intent, PICTURE_STUFF);
 
-		}
+            } catch (Exception zz) {
+                Log.e("camera", zz.getMessage());
+                Toast.makeText(context, "Please enable permissions for camera", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
 
-	}
+
+    private void saveImage(Bitmap finalBitmap) {
+
+        String root = Environment.getExternalStorageDirectory().getAbsolutePath() + "/IMGISMS";
+        File myDir = new File(root);
+
+        if (!myDir.exists()) {
+            myDir.mkdirs();
+        }
+
+        picnm = datno +   ".jpg";
+        Log.e("aaaaaaaaa", datno);
+        File file = new File(myDir, picnm);
+
+        if (file.exists()) {
+            file.delete();
+        }
+
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+
+            taken = "yap";
+            erer = 1;
+
+            if (file.exists()) {
+                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                sceneimage.setImageBitmap(bitmap);
+                lepicpath = file.getAbsolutePath();
+            }
+
+
+
+        }
+        catch (Exception e) {
+            Toast.makeText(context, "Camera error, take photograph again.", Toast.LENGTH_LONG ).show();
+            e.printStackTrace();
+        }
+
+        // Tell the media scanner about the new file so that it is
+        // immediately available to the user.
+        MediaScannerConnection.scanFile(this, new String[] { file.toString() }, null,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+
+                    }
+                });
+
+
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode==PICTURE_STUFF && resultCode == RESULT_OK){
+
+
+
+            Bitmap bitmap;
+
+            BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+            bitmapOptions.inJustDecodeBounds= false;
+            bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
+            MediaStore.Images.Media.insertImage(getContentResolver(),
+                    bitmap,
+                    String.valueOf(System.currentTimeMillis()),
+                    "Description");
+            saveImage(bitmap);
+
+            String root2 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/IMGISMS";
+            File myDir2 = new File(root2);
+            File file2 = new File(myDir2, "temp.jpg");
+            if (file2.exists()){
+                file2.delete();
+            }
+
+        }
+
+
+    }
+
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+
+        String root = Environment.getExternalStorageDirectory().getAbsolutePath() +"/IMGISMS";
+        File myDir = new File(root);
+
+        if (!myDir.exists()) {
+            myDir.mkdirs();
+        }
+
+        picnm = "temp";
+
+
+
+        File image = File.createTempFile(
+                picnm,
+                ".jpg",
+                myDir
+        );
+
+        f = image;
+
+
+        return f;
+    }
+
+    /**
+     * Here we store the file url as it will be null after returning from camera
+     * app
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // save file url in bundle as it will be null on scren orientation
+        // changes
+        try {
+            outState.putParcelable("file_uri", fileUri);
+        }catch (Exception ss){
+
+        }
+    }
+
+    /*
+    * Here we restore the fileUri again
+    */
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // get the file url
+        try{
+            fileUri = savedInstanceState.getParcelable("file_uri");
+        }catch (Exception ss){
+
+        }
+    }
+
+    @SuppressLint("NewApi")
+    private void reqPermission(final String nini) {
+
+        naniask = nini;
+
+        List<String> permissionsNeeded = new ArrayList<String>();
+        final List<String> permissionsList = new ArrayList<String>();
+
+        if (!addPermission(permissionsList, android.Manifest.permission.ACCESS_FINE_LOCATION))
+            permissionsNeeded.add("Location");
+        if (!addPermission(permissionsList, android.Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            permissionsNeeded.add("Storage");
+        if (!addPermission(permissionsList, android.Manifest.permission.CAMERA))
+            permissionsNeeded.add("Camera");
+        if (!addPermission(permissionsList, android.Manifest.permission.READ_PHONE_STATE))
+            permissionsNeeded.add("Cell Network");
+
+        if (permissionsList.size() > 0) {
+            if (permissionsNeeded.size() > 0) {
+                // Need Rationale
+                String message = "This application needs to access your " + permissionsNeeded.get(0);
+                for (int i = 1; i < permissionsNeeded.size(); i++)
+                    message = message + ", " + permissionsNeeded.get(i);
+                showMessageOKCancel(message,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                                        REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+                            }
+                        });
+                return;
+            }
+            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                    REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+            return;
+        }
+
+        return;
+
+    }
+
+    @SuppressLint("NewApi")
+    private boolean addPermission(List<String> permissionsList, String permission) {
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            permissionsList.add(permission);
+            // Check for Rationale Option
+            if (!shouldShowRequestPermissionRationale(permission))
+                return false;
+        }
+        return true;
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(context)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS:
+            {
+                Map<String, Integer> perms = new HashMap<String, Integer>();
+                // Initial
+                perms.put(android.Manifest.permission.ACCESS_FINE_LOCATION, PackageManager.PERMISSION_GRANTED);
+                perms.put(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+                perms.put(android.Manifest.permission.CAMERA, PackageManager.PERMISSION_GRANTED);
+                perms.put(android.Manifest.permission.READ_PHONE_STATE, PackageManager.PERMISSION_GRANTED);
+                // Fill with results
+                for (int i = 0; i < permissions.length; i++)
+                    perms.put(permissions[i], grantResults[i]);
+                // Check for ACCESS_FINE_LOCATION
+                if (perms.get(
+                        android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(android.Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                        ) {
+                    // All Permissions Granted
+                    if (naniask.equals("Camera")) {
+                        PigaPicha();
+                    }
+                    Toast.makeText(context, "Permissions enabled", Toast.LENGTH_LONG).show();
+
+                } else {
+                    // Permission Denied
+                    Toast.makeText(context, "Some Permission is Denied", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+            break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
      
      
 

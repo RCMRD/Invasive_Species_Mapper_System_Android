@@ -34,10 +34,6 @@ package com.servir.invasivespecies;
         import com.google.android.gms.location.LocationListener;
         import com.google.android.gms.location.LocationRequest;
         import com.google.android.gms.location.LocationServices;
-        import com.kishan.askpermission.AskPermission;
-        import com.kishan.askpermission.ErrorCallback;
-        import com.kishan.askpermission.PermissionCallback;
-        import com.kishan.askpermission.PermissionInterface;
 
         import android.*;
         import android.app.Activity;
@@ -84,7 +80,7 @@ package com.servir.invasivespecies;
         import android.widget.ViewSwitcher.ViewFactory;
 
 public class MainActivity extends AppCompatActivity
-        implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, PermissionCallback, ErrorCallback {
+        implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     TextSwitcher textSwitcher;
     Animation slide_in_left, slide_out_right;
@@ -151,18 +147,6 @@ public class MainActivity extends AppCompatActivity
 
         if (!isgpsa(this)){
             Toast.makeText(this, "Google Play Services is disabled on your phone", Toast.LENGTH_LONG).show();
-        }
-
-        if (ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.RECEIVE_BOOT_COMPLETED) != PackageManager.PERMISSION_GRANTED
-                ) {
-            reqPermission();
         }
 
 
@@ -1469,54 +1453,7 @@ public class MainActivity extends AppCompatActivity
     }*/
 
 
-    private void reqPermission() {
-        new AskPermission.Builder(this).setPermissions(
-                android.Manifest.permission.READ_CONTACTS,
-                android.Manifest.permission.ACCESS_FINE_LOCATION,
-                android.Manifest.permission.INTERNET,
-                android.Manifest.permission.ACCESS_NETWORK_STATE,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.CAMERA,
-                android.Manifest.permission.READ_PHONE_STATE,
-                android.Manifest.permission.RECEIVE_BOOT_COMPLETED)
-                .setCallback(MainActivity.this)
-                .setErrorCallback(MainActivity.this)
-                .request(REQUEST_PERMISSIONS);
-    }
 
-    public void onPermissionsGranted(int requestCode) {
-        Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
-    }
-
-    public void onPermissionsDenied(int requestCode) {
-        Toast.makeText(this, "Permissions Denied. Some app functionality will not work.", Toast.LENGTH_LONG).show();
-    }
-
-    public void onShowRationalDialog(final PermissionInterface permissionInterface, int requestCode) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("We need permissions accepted for this app to work.");
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                permissionInterface.onDialogShown();
-            }
-        });
-        builder.setNegativeButton("Cancel", null);
-        builder.show();
-    }
-
-    public void onShowSettings(final PermissionInterface permissionInterface, int requestCode) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("We need permissions for this app. Open setting screen?");
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                permissionInterface.onSettingsShown();
-            }
-        });
-        builder.setNegativeButton("Cancel", null);
-        builder.show();
-    }
 
 
 

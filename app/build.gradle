@@ -21,8 +21,8 @@ android {
         applicationId "com.servir.invasivespecies"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 6
-        versionName "ISMS_6_01082018"
+        versionCode 7
+        versionName "ISMS_7_01112018"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -51,7 +51,6 @@ dependencies {
     compile 'org.apache.httpcomponents:httpcomponents-client:4.5.2'
     compile 'org.apache.httpcomponents:httpcomponents-core:4.4.5'
     testCompile 'junit:junit:4.12'
-    compile 'com.kishan.askpermission:askpermission:1.0.3'
     compile 'com.google.maps.android:android-maps-utils:0.5'
     compile 'com.google.android.gms:play-services-appindexing:9.6.0'
 }

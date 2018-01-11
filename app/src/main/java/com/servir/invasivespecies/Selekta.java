@@ -52,6 +52,11 @@ public class Selekta extends ActionBarActivity {
     ImageView im4;
     ImageView im5;
     ImageView im6;
+    ImageView im7;
+    ImageView im8;
+    ImageView im9;
+    ImageView im10;
+    ImageView im11;
 
 
 	@Override
@@ -72,6 +77,11 @@ public class Selekta extends ActionBarActivity {
 		im4 = (ImageView) findViewById(R.id.im4);
 		im5 = (ImageView) findViewById(R.id.im5);
 		im6 = (ImageView) findViewById(R.id.im6);
+		im7 = (ImageView) findViewById(R.id.im7);
+		im8 = (ImageView) findViewById(R.id.im8);
+		im9 = (ImageView) findViewById(R.id.im9);
+		im10 = (ImageView) findViewById(R.id.im10);
+		im11 = (ImageView) findViewById(R.id.im11);
 
 		Intent intentqa = getIntent();
 		sax = intentqa.getStringExtra("lonnn");
@@ -96,6 +106,11 @@ public class Selekta extends ActionBarActivity {
 				im4.setBackground(null);
 				im5.setBackground(null);
 				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
 				s001 = "Acacia Reficiens";
 			}
 		});
@@ -110,6 +125,11 @@ public class Selekta extends ActionBarActivity {
 				im4.setBackground(null);
 				im5.setBackground(null);
 				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
 				s001 = "Opuntia Species";
 			}
 		});
@@ -124,6 +144,11 @@ public class Selekta extends ActionBarActivity {
 				im4.setBackground(null);
 				im5.setBackground(null);
 				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
 				s001 = "Lantana Camara";
 			}
 		});
@@ -138,6 +163,11 @@ public class Selekta extends ActionBarActivity {
 				im1.setBackground(null);
 				im5.setBackground(null);
 				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
 				s001 = "Prosopis Species";
 			}
 		});
@@ -152,6 +182,11 @@ public class Selekta extends ActionBarActivity {
 				im4.setBackground(null);
 				im1.setBackground(null);
 				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
 				s001 = "Water Hyacinth";
 			}
 		});
@@ -166,9 +201,111 @@ public class Selekta extends ActionBarActivity {
 				im4.setBackground(null);
 				im5.setBackground(null);
 				im1.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				s001 = "Chromolaena Odorata";
+			}
+		});
+
+		im7.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im7.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				s001 = "Parthenium Hysterophorus";
+			}
+		});
+
+		im8.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im8.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				s001 = "Prosopis Juliflora Species";
+			}
+		});
+
+		im9.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im9.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				s001 = "Tithonia Diversifolia Species";
+			}
+		});
+
+		im10.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im10.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im11.setBackground(null);
+				s001 = "Opuntia Stricta";
+			}
+		});
+
+		im11.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im11.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
 				s001 = "Other";
 			}
 		});
+
+
 
 
 		tuma.setOnClickListener(new OnClickListener() {
