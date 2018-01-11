@@ -263,7 +263,7 @@ public class Selekta extends ActionBarActivity {
 				im8.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
-				s001 = "Tithonia Diversifolia Species";
+				s001 = "Opuntia Stricta";
 			}
 		});
 
@@ -282,7 +282,7 @@ public class Selekta extends ActionBarActivity {
 				im8.setBackground(null);
 				im9.setBackground(null);
 				im11.setBackground(null);
-				s001 = "Opuntia Stricta";
+				s001 = "Tithonia Diversifolia Species";
 			}
 		});
 
