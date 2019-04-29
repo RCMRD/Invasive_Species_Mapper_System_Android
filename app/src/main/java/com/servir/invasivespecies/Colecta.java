@@ -46,12 +46,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.servir.invasivespecies.utils.CustomAdapter;
+
 public class Colecta extends AppCompatActivity {
 	
 	Button rudi;
 	Button tuma;
 	Button btnfoto;
-	String s002, s003, s004, s006, s007, s008, s031, s0312,s0313, s005,s02x,s04x ;
+	String s002, s004, s006, s007, s008, s031,s0313, s005,s02x,s04x ;
+	String s003 = "SELECT";
+    String s0312 = "SELECT";
 	String datno = "";
 	String	sax = "";
 	String	say = "";
@@ -64,7 +68,7 @@ public class Colecta extends AppCompatActivity {
 	View View;
 	SQLiteDatabase spatiadb;
 	ArrayAdapter<String> spinnerArrayAdapter;
-	Spinner	s6,s3, s31, s312, s313, s2x, s4x;
+	Spinner	s6,s3, s31, s312, s313/*, s2x, s4x*/;
 	EditText s2, s4, s7, s8, s87;
 	TextView s1;
 	RadioButton neww, prevv; 
@@ -84,6 +88,13 @@ public class Colecta extends AppCompatActivity {
 	private final static int PICTURE_STUFF = 1;
     private final static int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 13;
     private Uri fileUri;
+
+    //spinners with images
+    String[] canopy_features = {"SELECT","Trace ( less than 1% )","Low ( 1.0% to 5.0% )","Moderate ( 5.1% to 25% )","High ( 25.1% to 100% )"};
+    int canopy_images[] = {R.drawable.select_button_theme,R.drawable.trace_canopy_theme,R.drawable.low_canopy_theme, R.drawable.moderate_canopy_theme, R.drawable.high_canopy_theme};
+
+    String[] species_features = {"SELECT","Single Plant","Scattered Plants","Dense Monoculture","Scattered Dense Patches"};
+    int species_images[] = {R.drawable.select_button_theme,R.drawable.single_species,R.drawable.scattered_species, R.drawable.dense_species, R.drawable.scatter_dense_species};
 
 
     @Override
@@ -111,8 +122,8 @@ public class Colecta extends AppCompatActivity {
         s31= (Spinner) findViewById (R.id.s31);
         s312= (Spinner) findViewById (R.id.s312);
         s313= (Spinner) findViewById (R.id.s313);
-        s2x= (Spinner) findViewById (R.id.s2x);
-        s4x= (Spinner) findViewById (R.id.s4x);
+        /*s2x= (Spinner) findViewById (R.id.s2x);
+        s4x= (Spinner) findViewById (R.id.s4x);*/
       
         s2= (EditText) findViewById (R.id.s2);
         s4= (EditText) findViewById (R.id.s4);
@@ -187,6 +198,38 @@ public class Colecta extends AppCompatActivity {
 		}else{
 			s87.setEnabled(true);
 		}
+
+
+        s3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(MainActivity.this, "You Select Position: "+position+" "+fruits[position], Toast.LENGTH_SHORT).show();
+                s003 = canopy_features[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        CustomAdapter customAdapterCanopy=new CustomAdapter(getApplicationContext(),canopy_images,canopy_features);
+        s3.setAdapter(customAdapterCanopy);
+
+        s312.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                s0312 = species_features[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        CustomAdapter customAdapterSpecies=new CustomAdapter(getApplicationContext(),species_images,species_features);
+        s312.setAdapter(customAdapterSpecies);
 
 
 
@@ -281,13 +324,13 @@ public class Colecta extends AppCompatActivity {
 
 		    	  //s006 = s6.getSelectedItem().toString().trim();
 		    	  s006  = "";
-		    	  s003 = s3.getSelectedItem().toString().trim();
+		    	  //s003 = s3.getSelectedItem().toString().trim();
 		    	  s031 = s31.getSelectedItem().toString().trim();
-		    	  s0312 = s312.getSelectedItem().toString().trim();
+		    	  //s0312 = s312.getSelectedItem().toString().trim();
 		    	  s0313 = s313.getSelectedItem().toString().trim();
 		    	  
-		    	  s02x = s2x.getSelectedItem().toString().trim();
-		    	  s04x = s4x.getSelectedItem().toString().trim();
+		    	  s02x = "Square Metres";
+		    	  s04x = "Square Metres";
        		      
        		      
              		if(s7.getText().toString().trim().length() == 0){
@@ -346,13 +389,14 @@ public class Colecta extends AppCompatActivity {
        		
        		if (
        			//s1.getSelectedItem().toString().trim().equals("SELECT")||
-       			s3.getSelectedItem().toString().trim().equals("SELECT")||
+       			s003.equals("SELECT")||
        			//s6.getSelectedItem().toString().trim().equals("SELECT")||
        			s31.getSelectedItem().toString().trim().equals("SELECT")||
-       			s312.getSelectedItem().toString().trim().equals("SELECT")||
-       			s313.getSelectedItem().toString().trim().equals("SELECT")||
-       			s2x.getSelectedItem().toString().trim().equals("UNITS")||
-       			s4x.getSelectedItem().toString().trim().equals("UNITS")||
+                        s0312.equals("SELECT")||
+       			//s312.getSelectedItem().toString().trim().equals("SELECT")||
+                        // s313.getSelectedItem().toString().trim().equals("SELECT")||
+       			/*s2x.getSelectedItem().toString().trim().equals("UNITS")||
+       			s4x.getSelectedItem().toString().trim().equals("UNITS")||*/
        			s2.getText().toString().equals("")||
        			s4.getText().toString().equals("")||
        			s7.getText().toString().equals("")){

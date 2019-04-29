@@ -3,15 +3,15 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         ISMS_RELEASE {
-            keyAlias 'ISMS'
+            keyAlias 'igotthaMINE'
             keyPassword '53#falls'
-            storeFile file('C:/tieneAS/Funguo/igotthaISMS.jks')
+            storeFile file('C:/tieneAS/Funguo/igotthaMINE.jks')
             storePassword '53#falls'
         }
         ISMS_DEBUG {
-            keyAlias 'ISMS'
+            keyAlias 'igotthaMINE'
             keyPassword '53#falls'
-            storeFile file('C:/tieneAS/Funguo/igotthaISMS.jks')
+            storeFile file('C:/tieneAS/Funguo/igotthaMINE.jks')
             storePassword '53#falls'
         }
     }

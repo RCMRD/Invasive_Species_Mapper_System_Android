@@ -141,15 +141,23 @@
 	        android:hint="@string/t4"
         />
          
-         <Spinner
+        <!-- <Spinner
             android:id="@+id/s2x"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:entries="@array/t644"
              style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_weight="0.6"
-            android:prompt="@string/tunit" />
-         
+            android:prompt="@string/tunit" />-->
+
+            <TextView
+                android:id="@+id/s2xtx"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:textColor="#000000"
+                android:text="Square Metres"
+                android:textSize="16sp" />
          
          
          </LinearLayout>
@@ -182,19 +190,29 @@
 	        android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:singleLine="true"
             android:layout_weight="0.4"
-	        android:hint="@string/t6"
+            android:singleLine="true"
+            android:hint="@string/t6"
         />
+
         
-        <Spinner
+        <!--<Spinner
             android:id="@+id/s4x"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:entries="@array/t644"
             android:layout_weight="0.6"
             style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:prompt="@string/tunit" />
+            android:prompt="@string/tunit" />-->
+
+           <TextView
+               android:id="@+id/s4xtx"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="0.6"
+               android:textColor="#000000"
+               android:text="Square Metres"
+               android:textSize="16sp" />
         
         </LinearLayout>
         
@@ -217,10 +235,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nomi31"
             android:layout_alignLeft="@+id/nomi"
-            android:entries="@array/t31"
               style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:prompt="@string/t5" />
-          
+            android:prompt="@string/t5" /><!-- android:entries="@array/t31"-->
+
           <TextView
             android:id="@+id/nomi311"
             android:layout_below="@+id/s3"
@@ -280,8 +297,7 @@
             android:layout_below="@+id/nomi312"
               style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_alignLeft="@+id/nomi"
-            android:entries="@array/t312"
-            android:prompt="@string/t52" />
+            android:prompt="@string/t52" /><!--android:entries="@array/t312"-->
         
           <TextView
             android:id="@+id/nomi313"
