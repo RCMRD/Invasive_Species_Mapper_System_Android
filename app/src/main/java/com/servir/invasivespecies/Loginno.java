@@ -116,6 +116,8 @@ public class Loginno extends AppCompatActivity {
         {
             mail = c.getString(4);
             pass = c.getString(5);
+            Log.e("INVSPEC_mail",mail);
+            Log.e("INVSPEC_pass",pass);
         }else{
             statt = "unreg";
         }
@@ -419,11 +421,11 @@ public class Loginno extends AppCompatActivity {
                     Cursor chk=spatiadb.rawQuery("SELECT * FROM userTBL WHERE userno='"+huyu+"'", null);
                     if(chk.moveToFirst())
                     {
-                        spatiadb.execSQL("UPDATE userTBL SET usernem='"+smalla2.get(0)+"',usertel='"+smalla2.get(1)+"',usercntry='"+smalla2.get(2)+"',useremail='"+smalla2.get(3)+"', userpass='"+smalla2.get(4)+"' WHERE userno='"+huyu+"'");
+                        spatiadb.execSQL("UPDATE userTBL SET usernem='"+smalla2.get(0)+"',usertel='"+smalla2.get(1)+"',usercntry='"+smalla2.get(2)+"',useremail='"+smalla2.get(3)+"', userpass='"+pswd+"' WHERE userno='"+huyu+"'");
                     }
                     else
                     {
-                        spatiadb.execSQL("INSERT INTO userTBL VALUES('"+huyu+"','"+smalla2.get(0)+"','"+smalla2.get(1)+"','"+smalla2.get(2)+"','"+smalla2.get(3)+"','"+smalla2.get(4)+"');");
+                        spatiadb.execSQL("INSERT INTO userTBL VALUES('"+huyu+"','"+smalla2.get(0)+"','"+smalla2.get(1)+"','"+smalla2.get(2)+"','"+smalla2.get(3)+"','"+pswd+"');");
                     }
                     chk.close();
 
@@ -565,6 +567,10 @@ public class Loginno extends AppCompatActivity {
                     Intent intent = new Intent(Loginno.this, MainActivity.class);
                     startActivity(intent);
                 } else{
+                    Log.e("INVSPEC_2_mail",mail);
+                    Log.e("INVSPEC_2_pass",pass);
+                    Log.e("INVSPEC_mail_type",myil);
+                    Log.e("INVSPEC_pass_type",pswd);
                     Toast.makeText(Loginno.this, "Incorrect login detail. Please try again.", Toast.LENGTH_LONG).show();
                 }
 

@@ -3,15 +3,15 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         ISMS_RELEASE {
-            keyAlias 'igotthaMINE'
+            keyAlias 'igotthaMINE_ISMS'
             keyPassword '53#falls'
-            storeFile file('C:/tieneAS/Funguo/igotthaMINE')
+            storeFile file('/home/steve/all_vak/tieneAS/Funguo/igotthaMINE_ISMS.jks')
             storePassword '53#falls'
         }
         ISMS_DEBUG {
-            keyAlias 'igotthaMINE'
+            keyAlias 'igotthaMINE_ISMS'
             keyPassword '53#falls'
-            storeFile file('C:/tieneAS/Funguo/igotthaMINE')
+            storeFile file('/home/steve/all_vak/tieneAS/Funguo/igotthaMINE_ISMS.jks')
             storePassword '53#falls'
         }
     }
@@ -21,8 +21,8 @@ android {
         applicationId "com.servir.invasivespecies"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 7
-        versionName "ISMS_7_01112018"
+        versionCode 8
+        versionName "ISMS_8_30042019"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
