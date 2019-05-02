@@ -283,12 +283,9 @@ public class MainActivity extends AppCompatActivity
                         }
 
                         if (latitude!=0.0 && longitude!=0.0 ){
-                            //taftaa.setVisibility(View.GONE);
-                            sitato.setText("Locator Status : Detected");
-                            //sitato.setTypeface(Typeface.DEFAULT_BOLD, Typeface.BOLD_ITALIC);
+                            sitato.setText("GPS Location : Detected");
                         }else{
-                            sitato.setText("Locator Status : Scanning");
-                            //sitato.setTypeface(Typeface.DEFAULT_BOLD, Typeface.BOLD_ITALIC);
+                            sitato.setText("GPS Location : Searching...");
 
                             //taftaa.setVisibility(View.VISIBLE);
 
@@ -324,7 +321,7 @@ public class MainActivity extends AppCompatActivity
 
                 if (sax.equals("0.0") || say.equals("0.0")){
                     updateUI();
-                    Toast.makeText(MainActivity.this,"Please turn on GPS then try again",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Please turn on GPS then try again / Or wait for GPS Location to be detected if ON",Toast.LENGTH_LONG).show();
                 }else{
 
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", java.util.Locale.getDefault());
@@ -364,7 +361,7 @@ public class MainActivity extends AppCompatActivity
                 }else{
 
                     updateUI();
-                    Toast.makeText(MainActivity.this,"Please turn on GPS then try again",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Please turn on GPS then try again / Or wait for GPS Location to be detected if ON",Toast.LENGTH_LONG).show();
 
 
                 }
@@ -524,10 +521,10 @@ public class MainActivity extends AppCompatActivity
             PendingResult<Status> pr = LocationServices.FusedLocationApi.requestLocationUpdates(mgac, mlr, this);
 
             if (latitude!=0.0 && longitude!=0.0 ){
-                sitato.setText("Locator Status : Detected");
+                sitato.setText("GPS Location : Detected");
 
             }else{
-                sitato.setText("Locator Status : Scanning");
+                sitato.setText("GPS Location : Searching...");
             }
 
         }
@@ -1134,15 +1131,15 @@ public class MainActivity extends AppCompatActivity
                 PendingResult<Status> pr = LocationServices.FusedLocationApi.requestLocationUpdates(mgac, mlr, this);
 
                 if (latitude!=0.0 && longitude!=0.0 ){
-                    sitato.setText("Locator Status : Detected");
+                    sitato.setText("GPS Location : Detected");
 
                 }else{
-                    sitato.setText("Locator Status : Scanning");
+                    sitato.setText("GPS Location : Searching...");
                 }
 
 
             } else {
-                Toast.makeText(MainActivity.this, "GPS Location services must be enabled.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "GPS Location services must be detected first. If GPS is ON kindly wait as location is detected.", Toast.LENGTH_SHORT).show();
             }
         }
     }

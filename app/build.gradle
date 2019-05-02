@@ -5,13 +5,15 @@ android {
         ISMS_RELEASE {
             keyAlias 'igotthaMINE_ISMS'
             keyPassword '53#falls'
-            storeFile file('/home/steve/all_vak/tieneAS/Funguo/igotthaMINE_ISMS.jks')
+            //storeFile file('/home/steve/all_vak/tieneAS/Funguo/igotthaMINE_ISMS.jks')
+            storeFile file('C:\\tieneAS\\Funguo\\igotthaMINE_ISMS')
             storePassword '53#falls'
         }
         ISMS_DEBUG {
             keyAlias 'igotthaMINE_ISMS'
             keyPassword '53#falls'
-            storeFile file('/home/steve/all_vak/tieneAS/Funguo/igotthaMINE_ISMS.jks')
+            //storeFile file('/home/steve/all_vak/tieneAS/Funguo/igotthaMINE_ISMS.jks')
+            storeFile file('C:\\tieneAS\\Funguo\\igotthaMINE_ISMS')
             storePassword '53#falls'
         }
     }

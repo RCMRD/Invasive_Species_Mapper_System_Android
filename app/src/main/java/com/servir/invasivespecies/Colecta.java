@@ -195,8 +195,10 @@ public class Colecta extends AppCompatActivity {
 		if (!s001.equals("Other")){
 			s87.setText("");
 			s87.setEnabled(false);
+			s87.setVisibility(View.GONE);
 		}else{
 			s87.setEnabled(true);
+            s87.setVisibility(View.VISIBLE);
 		}
 
 
@@ -246,9 +248,11 @@ public class Colecta extends AppCompatActivity {
 				
 	 	       if (mm.equals("Other")){
 	 	    	   s8.setEnabled(true);
+                   s8.setVisibility(View.VISIBLE);
 	 	       }else{
 	 	    	  s8.setText("");
 	 	    	  s8.setEnabled(false);
+                   s8.setVisibility(View.GONE);
 	 	       }
 			}
 
@@ -330,8 +334,9 @@ public class Colecta extends AppCompatActivity {
 		    	  s0313 = s313.getSelectedItem().toString().trim();
 		    	  
 		    	  s02x = "Square Metres";
-		    	  s04x = "Square Metres";
-       		      
+		    	  //s04x = "Square Metres";
+		    	  s04x = "";
+
        		      
              		if(s7.getText().toString().trim().length() == 0){
        		    	s007 = "None";
@@ -341,7 +346,8 @@ public class Colecta extends AppCompatActivity {
 
 
              	  s002 = s2.getText().toString().trim();
-       		      s004 = s4.getText().toString().trim();
+       		      //s004 = s4.getText().toString().trim();
+       		      s004 = "";
        		      s007 = s7.getText().toString().trim();
        		      s008 = s8.getText().toString().trim();
 
@@ -398,7 +404,7 @@ public class Colecta extends AppCompatActivity {
        			/*s2x.getSelectedItem().toString().trim().equals("UNITS")||
        			s4x.getSelectedItem().toString().trim().equals("UNITS")||*/
        			s2.getText().toString().equals("")||
-       			s4.getText().toString().equals("")||
+       			//s4.getText().toString().equals("")||
        			s7.getText().toString().equals("")){
        			
        			Toast.makeText(Colecta.this, "Please complete the questionnaire first", Toast.LENGTH_LONG ).show();
@@ -420,7 +426,8 @@ public class Colecta extends AppCompatActivity {
        			   }*/
        				
        				s002 = s002 + " " + s02x;
-       				s004 = s004 + " " + s04x;
+       				//s004 = s004 + " " + s04x;
+       				s004 = "";
 
        				
        			

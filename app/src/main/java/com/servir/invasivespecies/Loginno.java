@@ -116,8 +116,8 @@ public class Loginno extends AppCompatActivity {
         {
             mail = c.getString(4);
             pass = c.getString(5);
-            Log.e("INVSPEC_mail",mail);
-            Log.e("INVSPEC_pass",pass);
+            //Log.e("INVSPEC_mail",mail);
+            //Log.e("INVSPEC_pass",pass);
         }else{
             statt = "unreg";
         }
@@ -447,9 +447,9 @@ public class Loginno extends AppCompatActivity {
                     startActivity(intent);
 
                 }else{
-                    Toast.makeText(Loginno.this, "Incorrect login detail. Please try again.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Loginno.this, "Incorrect login detail / User not approved. Please try again IF already APPROVED by the ADMIN ELSE CONTACT eouko@rcmrd.org.", Toast.LENGTH_LONG).show();
 
-                        logemailA.setText("");
+                        //logemailA.setText("");
                         logpassA.setText("");
                 }
 
@@ -491,7 +491,7 @@ public class Loginno extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                Toast.makeText(Loginno.this, "No active user account exists on the phone. Please Sign Up first ", Toast.LENGTH_LONG).show();
+                Toast.makeText(Loginno.this, "No active user account exists on the phone. Please Sign Up / Register first.", Toast.LENGTH_LONG).show();
                 ingia.dismiss();
             }
         });
@@ -567,10 +567,10 @@ public class Loginno extends AppCompatActivity {
                     Intent intent = new Intent(Loginno.this, MainActivity.class);
                     startActivity(intent);
                 } else{
-                    Log.e("INVSPEC_2_mail",mail);
-                    Log.e("INVSPEC_2_pass",pass);
-                    Log.e("INVSPEC_mail_type",myil);
-                    Log.e("INVSPEC_pass_type",pswd);
+                    //Log.e("INVSPEC_2_mail",mail);
+                    //Log.e("INVSPEC_2_pass",pass);
+                    //Log.e("INVSPEC_mail_type",myil);
+                    //Log.e("INVSPEC_pass_type",pswd);
                     Toast.makeText(Loginno.this, "Incorrect login detail. Please try again.", Toast.LENGTH_LONG).show();
                 }
 
@@ -593,7 +593,8 @@ public class Loginno extends AppCompatActivity {
             intent.putExtra("lonnn", sax);
             startActivity(intent);
         }else{
-            Toast.makeText(Loginno.this, "You have already registered to use the system. [Sign In] to access the Registration form through the menu.", Toast.LENGTH_LONG).show();
+            //ask if they would want to change password? or allow the things above mara moja
+            Toast.makeText(Loginno.this, "You have already registered to use the system. [Sign In] to access the Registration form through the menu. If password forgotten, contact eouko@rcmrd.org", Toast.LENGTH_LONG).show();
         }
 
 
