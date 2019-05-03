@@ -380,9 +380,85 @@
         </RadioGroup>
 
 
+    <TextView
+        android:id="@+id/nomi33s"
+        android:layout_below="@+id/radiops2"
+        android:layout_width="wrap_content"
+        android:layout_alignLeft="@+id/nomi"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:text="@string/t12s"
+        android:textSize="16sp" />
+
+
+
+    <RadioGroup
+        android:id="@+id/radiops2s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nomi33s"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/newws"
+            android:layout_width="match_parent"
+            android:background="@drawable/ybb"
+            android:button="@null"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:checked="true"
+            android:gravity="center"
+            android:textColor="@drawable/a"
+            android:text="@string/tns" />
+
+        <RadioButton
+            android:id="@+id/prevvs"
+            android:layout_width="match_parent"
+            android:background="@drawable/ybb"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@drawable/a"
+            android:text="@string/tys" />
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/s33s"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radiops2s"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/nomi"
+        android:enabled="false"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:entries="@array/t33s"
+        android:prompt="@string/t51s" />
+
+
+    <EditText
+        android:id="@+id/s8s"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/s33s"
+        android:layout_marginTop="5dp"
+        android:layout_alignLeft="@+id/nomi"
+        android:inputType="text"
+        android:enabled="false"
+        android:visibility="gone"
+        android:singleLine="true"
+        android:hint="@string/s8a"
+        />
+
+
         <TextView
             android:id="@+id/nomi31e"
-            android:layout_below="@+id/radiops2"
+            android:layout_below="@+id/s8s"
             android:layout_width="wrap_content"
             android:layout_alignLeft="@+id/nomi"
             android:layout_height="wrap_content"

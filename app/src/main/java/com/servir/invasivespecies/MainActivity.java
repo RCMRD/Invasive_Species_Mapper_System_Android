@@ -165,17 +165,17 @@ public class MainActivity extends AppCompatActivity
         //spatiadb.execSQL("DROP TABLE IF EXISTS datTBL");
 
         spatiadb.execSQL("CREATE TABLE IF NOT EXISTS userTBL(userno VARCHAR,usernem VARCHAR,usertel VARCHAR,usercntry VARCHAR,useremail VARCHAR,userpass VARCHAR);");
-        spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
+        spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datset VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
 
         Cursor ca1 = spatiadb.rawQuery("SELECT * FROM datTBL", null);
 
         if (ca1 == null){
-            spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
-        }else if (ca1.getColumnIndex("datorg")== -1){
+            spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datset VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
+        }else if (ca1.getColumnIndex("datset")== -1){
             spatiadb.execSQL("DROP TABLE IF EXISTS datTBL");
-            spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
+            spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datset VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
         }else{
-            spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
+            spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datset VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
         }
 
         ca1.close();
@@ -400,6 +400,7 @@ public class MainActivity extends AppCompatActivity
 							stora.add(c5.getString(13));
 							stora.add(c5.getString(14));
 							stora.add(c5.getString(15));
+							stora.add(c5.getString(16));
                         }
 
                         while(c5.moveToNext())
@@ -420,6 +421,7 @@ public class MainActivity extends AppCompatActivity
 							stora.add(c5.getString(13));
 							stora.add(c5.getString(14));
 							stora.add(c5.getString(15));
+							stora.add(c5.getString(16));
                         }
 						
 						c5.close();
@@ -1009,7 +1011,7 @@ public class MainActivity extends AppCompatActivity
 
                 if (vitingapi.equals("pass")){
                     spatiadb.execSQL("DROP TABLE IF EXISTS datTBL");
-                    spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
+                    spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datset VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
 
                     Cursor c5q=spatiadb.rawQuery("SELECT * FROM picTBL", null);
 

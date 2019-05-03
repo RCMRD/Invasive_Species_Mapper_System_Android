@@ -123,6 +123,8 @@
 
     <string name="t51">Habitat</string>
 
+    <string name="t51s">Settlement</string>
+
     <string name="t52">Species Abundance</string>
 
     <string name="t53">Land Ownership</string>
@@ -197,14 +199,17 @@
 
 
     <string name="t12">Area Accessibility</string>
+    <string name="t12s">Settlement</string>
 
     <string name="t13">Soil Investigation</string>
     <string name="t14">Foundation Excavation</string>
     <string name="t15">Foundation Concreting</string>
-    <string name="t16">Location Description</string>
+    <string name="t16">Optional</string>
 
     <string name="ty">Accessible</string>
     <string name="tn">Inaccessible</string>
+    <string name="tys">Yes</string>
+    <string name="tns">No</string>
 
     <string-array name="t311">
         <item>	SELECT	</item>
@@ -254,6 +259,12 @@
         <item>	Public Land </item>
         <item>	Community Land </item>
         <item>	Unknown </item>
+    </string-array>
+
+    <string-array name="t33s">
+        <item> Boma  </item>
+        <item>	Modern </item>
+        <item>	Other </item>
     </string-array>
 
 

@@ -42,6 +42,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +54,8 @@ public class Colecta extends AppCompatActivity {
 	Button rudi;
 	Button tuma;
 	Button btnfoto;
-	String s002, s004, s006, s007, s008, s031,s0313, s005,s02x,s04x ;
+	String s002, s004, s006, s007, s008, s031,s0313, s005,s02x,s04x;
+	RadioGroup rsettle;
 	String s003 = "SELECT";
     String s0312 = "SELECT";
 	String datno = "";
@@ -61,6 +63,7 @@ public class Colecta extends AppCompatActivity {
 	String	say = "";
 	String huyu = "user";
 	String	s001  = "";
+	String	s033  = "";
 	String	xcon  = "";
 	String	xorg  = "";
 	String syes = "Accessible";
@@ -68,10 +71,10 @@ public class Colecta extends AppCompatActivity {
 	View View;
 	SQLiteDatabase spatiadb;
 	ArrayAdapter<String> spinnerArrayAdapter;
-	Spinner	s6,s3, s31, s312, s313/*, s2x, s4x*/;
-	EditText s2, s4, s7, s8, s87;
+	Spinner	s6,s3, s31, s312, s313, s33s/*, s2x, s4x*/;
+	EditText s2, s4, s7, s8, s87, s8s;
 	TextView s1;
-	RadioButton neww, prevv; 
+	RadioButton neww, prevv, newws, prevvs;
 	String picnm = "";
 	String lepic;
     Context context = this;
@@ -114,7 +117,8 @@ public class Colecta extends AppCompatActivity {
 
 		rudi = (Button) findViewById (R.id.backo);
         tuma = (Button) findViewById (R.id.doneo);
-		sceneimage = (ImageView) findViewById(R.id.s12pic); 
+		sceneimage = (ImageView) findViewById(R.id.s12pic);
+		rsettle = (RadioGroup) findViewById(R.id.radiops2s);
         
         s1= (TextView) findViewById (R.id.s1);
         s6= (Spinner) findViewById (R.id.s6);
@@ -122,6 +126,7 @@ public class Colecta extends AppCompatActivity {
         s31= (Spinner) findViewById (R.id.s31);
         s312= (Spinner) findViewById (R.id.s312);
         s313= (Spinner) findViewById (R.id.s313);
+        s33s= (Spinner) findViewById (R.id.s33s);
         /*s2x= (Spinner) findViewById (R.id.s2x);
         s4x= (Spinner) findViewById (R.id.s4x);*/
       
@@ -129,10 +134,13 @@ public class Colecta extends AppCompatActivity {
         s4= (EditText) findViewById (R.id.s4);
         s7= (EditText) findViewById (R.id.s7);
         s8= (EditText) findViewById (R.id.s8);
+        s8s= (EditText) findViewById (R.id.s8s);
 		s87= (EditText) findViewById (R.id.s87);
         
         neww = (RadioButton) findViewById(R.id.neww);
 		prevv = (RadioButton) findViewById(R.id.prevv);
+        newws = (RadioButton) findViewById(R.id.newws);
+        prevvs = (RadioButton) findViewById(R.id.prevvs);
 		btnfoto = (Button) findViewById(R.id.bfopic);
 		/*neww2 = (RadioButton) findViewById(R.id.neww2);
 		prevv2 = (RadioButton) findViewById(R.id.prevv2);
@@ -162,7 +170,7 @@ public class Colecta extends AppCompatActivity {
        
        
        spatiadb=openOrCreateDatabase("InvSpecDB", Context.MODE_PRIVATE, null);
-		spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
+		spatiadb.execSQL("CREATE TABLE IF NOT EXISTS datTBL(datno VARCHAR,datftrname VARCHAR,datcnt VARCHAR,datiar VARCHAR,datgar VARCHAR,datcc VARCHAR,dathab VARCHAR,databd VARCHAR,datown VARCHAR,datara VARCHAR,datset VARCHAR,datcom VARCHAR,datx VARCHAR,daty VARCHAR,datpicnm VARCHAR,datorg VARCHAR,datcon VARCHAR);");
 		spatiadb.execSQL("CREATE TABLE IF NOT EXISTS picTBL(userpic VARCHAR, userpicpath VARCHAR, sendstat VARCHAR);");
 
 
@@ -238,9 +246,6 @@ public class Colecta extends AppCompatActivity {
 
 		s31.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-
-           
-     		
 			public void onItemSelected(AdapterView<?> arg0,
 					android.view.View arg1, int arg2, long arg3) {
 				// TODO Auto-generated method stub
@@ -263,7 +268,58 @@ public class Colecta extends AppCompatActivity {
 			}
 
      	});
-       
+
+        rsettle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+
+                if (newws.isChecked()){
+
+                    s33s.setSelection(0);
+                    s33s.setEnabled(false);
+                    s33s.setVisibility(View.GONE);
+
+                    s8s.setText("");
+                    s8s.setEnabled(false);
+                    s8s.setVisibility(View.GONE);
+
+                }else if (prevvs.isChecked()){
+                    s33s.setEnabled(true);
+                    s33s.setVisibility(View.VISIBLE);
+                }
+
+
+            }
+        });
+
+
+        s33s.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> arg0,
+                                       android.view.View arg1, int arg2, long arg3) {
+                // TODO Auto-generated method stub
+                String mm = s33s.getSelectedItem().toString();
+
+                if (mm.equals("Other")){
+                    s8s.setEnabled(true);
+                    s8s.setVisibility(View.VISIBLE);
+                }else{
+                    s8s.setText("");
+                    s8s.setEnabled(false);
+                    s8s.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+        });
+
+
        
        btnfoto.setOnClickListener(new OnClickListener(){
 	    	
@@ -373,6 +429,18 @@ public class Colecta extends AppCompatActivity {
        		      }else if (prevv.isChecked()){
        		    	  s005 = syes;
        		      }
+
+                    if (newws.isChecked()){
+                        s033 = "None";
+                    }else if (prevvs.isChecked()){
+
+       		          if(!s33s.getSelectedItem().toString().trim().equals("Other")){
+       		              s033 = s33s.getSelectedItem().toString().trim();
+                      }else{
+       		              s033 = s8s.getText().toString().trim();
+                      }
+
+                    }
        		      
        		      /*
        		   if (neww2.isChecked()){
@@ -404,6 +472,7 @@ public class Colecta extends AppCompatActivity {
        			/*s2x.getSelectedItem().toString().trim().equals("UNITS")||
        			s4x.getSelectedItem().toString().trim().equals("UNITS")||*/
        			s2.getText().toString().equals("")||
+                        s033.equals("")||
        			//s4.getText().toString().equals("")||
        			s7.getText().toString().equals("")){
        			
@@ -435,11 +504,11 @@ public class Colecta extends AppCompatActivity {
 		  	 		if(chk.moveToFirst())
 
 		  	 		{	
-		      		  spatiadb.execSQL("UPDATE datTBL SET datftrname='"+s001+"',datcnt='"+s006+"',datiar='"+s002+"',datgar='"+s004+"',datcc='"+s003+"',dathab='"+s031+"',databd='"+s0312+"',datown='"+s0313+"',datara='"+s005+"',datcom='"+s007+"',datx='"+sax+"',daty='"+say+"',datpicnm='"+picnm+"',datorg='"+xorg+"',datcon='"+xcon+"' WHERE datno='"+datno+"'");
+		      		  spatiadb.execSQL("UPDATE datTBL SET datftrname='"+s001+"',datcnt='"+s006+"',datiar='"+s002+"',datgar='"+s004+"',datcc='"+s003+"',dathab='"+s031+"',databd='"+s0312+"',datown='"+s0313+"',datara='"+s005+"',datset='"+s033+"',datcom='"+s007+"',datx='"+sax+"',daty='"+say+"',datpicnm='"+picnm+"',datorg='"+xorg+"',datcon='"+xcon+"' WHERE datno='"+datno+"'");
 		  	 	    }
 		  	 		else
 		  	 		{
-		  	 	     spatiadb.execSQL("INSERT INTO datTBL VALUES('"+datno+"','"+s001+"','"+s006+"','"+s002+"','"+s004+"','"+s003+"','"+s031+"','"+s0312+"','"+s0313+"','"+s005+"','"+s007+"','"+sax+"','"+say+"','"+picnm+"','"+xorg+"','"+xcon+"');");
+		  	 	     spatiadb.execSQL("INSERT INTO datTBL VALUES('"+datno+"','"+s001+"','"+s006+"','"+s002+"','"+s004+"','"+s003+"','"+s031+"','"+s0312+"','"+s0313+"','"+s005+"','"+s033+"','"+s007+"','"+sax+"','"+say+"','"+picnm+"','"+xorg+"','"+xcon+"');");
 		  	 		}
 					chk.close();
 					
@@ -502,7 +571,8 @@ public class Colecta extends AppCompatActivity {
 				s312.setSelection(0);
 				s313.setSelection(0);
 				neww.setChecked(true);
-				
+				newws.setChecked(true);
+
 				Intent intent = new Intent (Colecta.this, MainActivity.class);
 	        	startActivity(intent);
 				
