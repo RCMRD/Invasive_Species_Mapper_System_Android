@@ -3,14 +3,14 @@ package com.servir.invasivespecies;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView; 
 
-public class AboutUs extends ActionBarActivity {
+public class AboutUs extends AppCompatActivity {
  
 	Button tokaa;
 	TextView tvStn;

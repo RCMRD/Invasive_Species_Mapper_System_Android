@@ -9,14 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.*;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.content.FileProvider;;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -404,7 +402,6 @@ public class Colecta extends AppCompatActivity {
              	  s002 = s2.getText().toString().trim();
        		      //s004 = s4.getText().toString().trim();
        		      s004 = "";
-       		      s007 = s7.getText().toString().trim();
        		      s008 = s8.getText().toString().trim();
 
 					s001 = s001.replace("'", "''");
@@ -472,9 +469,10 @@ public class Colecta extends AppCompatActivity {
        			/*s2x.getSelectedItem().toString().trim().equals("UNITS")||
        			s4x.getSelectedItem().toString().trim().equals("UNITS")||*/
        			s2.getText().toString().equals("")||
-                        s033.equals("")||
+                        s033.equals("")
        			//s4.getText().toString().equals("")||
-       			s7.getText().toString().equals("")){
+       			//s7.getText().toString().equals("")
+               ){
        			
        			Toast.makeText(Colecta.this, "Please complete the questionnaire first", Toast.LENGTH_LONG ).show();
        		

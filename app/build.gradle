@@ -17,14 +17,14 @@ android {
             storePassword '53#falls'
         }
     }
-    compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 28
+    //buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.servir.invasivespecies"
         minSdkVersion 16
-        targetSdkVersion 24
-        versionCode 8
-        versionName "ISMS_8_30042019"
+        targetSdkVersion 28
+        versionCode 9
+        versionName "ISMS_9_03052019"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -43,16 +43,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.google.android.gms:play-services-location:9.6.0'
-    compile 'com.google.android.gms:play-services-maps:9.6.0'
-    compile 'org.apache.httpcomponents:httpcomponents-client:4.5.2'
-    compile 'org.apache.httpcomponents:httpcomponents-core:4.4.5'
-    testCompile 'junit:junit:4.12'
-    compile 'com.google.maps.android:android-maps-utils:0.5'
-    compile 'com.google.android.gms:play-services-appindexing:9.6.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    //implementation 'com.android.support:support-media-compat:28.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'org.apache.httpcomponents:httpcomponents-client:4.5.8'
+    implementation 'org.apache.httpcomponents:httpcomponents-core:4.4.11'
+    testImplementation 'junit:junit:4.13-beta-2'
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
+    implementation 'com.google.firebase:firebase-appindexing:17.1.0'
 }
