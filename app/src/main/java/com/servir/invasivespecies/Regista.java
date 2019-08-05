@@ -466,7 +466,7 @@ public class Regista extends AppCompatActivity {
     		}else if (tm.getPhoneType()!=TelephonyManager.PHONE_TYPE_CDMA){
     			String unet = tm.getNetworkCountryIso();
     			if (unet != null && unet.length() == 2){
-    				unet.toLowerCase(Locale.US);
+    				return unet.toLowerCase(Locale.US);
     			}
     	}
     		

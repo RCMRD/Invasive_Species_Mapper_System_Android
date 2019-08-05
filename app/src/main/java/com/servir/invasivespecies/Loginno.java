@@ -408,7 +408,8 @@ public class Loginno extends AppCompatActivity {
             try {
                 mpd.dismiss();
 
-                String mekam2 = output1.toString().trim();
+                String mekam2 = output1.trim();
+                Log.e("IS_login_server_return",mekam2);
 
                 if (mekam2.length() >= 13){
 
@@ -450,10 +451,9 @@ public class Loginno extends AppCompatActivity {
                 }
 
             }catch(Exception x){
-                //Log.e("FM_login_error_auth",x.toString());
+                Log.e("IS_login_error_auth",x.toString());
                 diambaidno(View);
             }
-
 
         }
 
@@ -478,8 +478,9 @@ public class Loginno extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                ingia.dismiss();
+                Log.e("IS_log_details",myil+pswd);
                 new HttpAsyncTask2().execute(new String[]{URL1});
+                ingia.dismiss();
 
             }
         });
