@@ -18,15 +18,16 @@
 
     <EditText
         android:id="@+id/upwd"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines = "1"
+        android:singleLine="true"
+        android:textColor="@color/colorBlackText"
         android:hint="@string/pwada"
         android:layout_marginBottom="10dp"
         android:inputType="textPassword"
-        android:ems="10" >
-    </EditText>
-   
+        />
+
         
         
 <RelativeLayout 

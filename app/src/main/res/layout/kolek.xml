@@ -3,548 +3,527 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="top"
     android:background="#FFFFFF"
+    android:paddingBottom="50dp"
     android:layout_margin="5dp"
     android:orientation="vertical"
     >
-    
-    <TextView
-            android:id="@+id/title6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:text="@string/t1"
-            android:textColor="@color/colorThm"
-            android:textStyle="bold"
-            android:textSize="17sp" />
 
-<ScrollView 
+    <TextView
+        android:id="@+id/title6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:text="@string/t1"
+        android:textColor="@color/colorGreenSpecial"
+        android:textStyle="bold"
+        android:textSize="17sp" />
+
+    <ScrollView
         android:id="@+id/scrolli"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal|top"
         android:layout_height="0dp"
         android:layout_weight="1"
         >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-    
-         
-        <TextView
-            android:id="@+id/nomi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:text="Invasive Species :      "
-            android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/s1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#000000"
-        android:text="Invasive Species"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        android:layout_toRightOf="@+id/nomi"
-
-        />
-
-        <!--
-        <Spinner
-            android:id="@+id/s1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nomi"
-            android:layout_alignParentLeft="true"
-            android:clickable="false"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:entries="@array/t3"
-            android:prompt="@string/t2" />-->
-
-    <EditText
-        android:id="@+id/s87"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:enabled="false"
-        android:visibility="gone"
-        android:singleLine="true"
-        android:hint="@string/s8a"
-        android:layout_below="@+id/nomi"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-         
-        
-         
-         <TextView
-            android:id="@+id/nosrf"
-            android:layout_below="@+id/s87"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:visibility="gone"
-            android:textColor="#000000"
-            android:text="@string/t10"
-            android:textSize="16sp" />
-        
-        <Spinner
-            android:id="@+id/s6"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:visibility="gone"
-            android:layout_below="@+id/nosrf"
-            android:layout_alignParentLeft="true"
-            android:entries="@array/t11"
-            android:prompt="@string/t10" />
-        
-         
-        <TextView
-            android:id="@+id/nomi30"
-            android:layout_below="@+id/s6"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentLeft="true"
-            android:textColor="#000000"
-            android:text="@string/t4"
-            android:textSize="16sp" />
-        
-        
-        <LinearLayout 
-            android:id="@+id/s2q"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nomi30"
-            android:layout_marginTop="3dp"
-            android:weightSum="1"
-            android:layout_alignLeft="@+id/nomi"
-            >
-        
-         <EditText 
-	        android:id="@+id/s2"
-	        android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:layout_weight="0.4"
-            android:singleLine="true"
-	        android:hint="@string/t4"
-        />
-         
-        <!-- <Spinner
-            android:id="@+id/s2x"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/t644"
-             style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_weight="0.6"
-            android:prompt="@string/tunit" />-->
-
-            <TextView
-                android:id="@+id/s2xtx"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:textColor="#000000"
-                android:text="Square Metres"
-                android:textSize="16sp" />
-         
-         
-         </LinearLayout>
-        
-        
-        <TextView
-            android:id="@+id/nomi32"
-            android:layout_below="@+id/s2q"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:visibility="gone"
-            android:textColor="#000000"
-            android:text="@string/t6"
-            android:textSize="16sp" />
-        
-        
-       <LinearLayout 
-            android:id="@+id/s2q1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-           android:visibility="gone"
-            android:layout_below="@+id/nomi32"
-            android:layout_marginTop="3dp"
-            android:weightSum="1"
-            android:layout_alignLeft="@+id/nomi"
-            >
-         
-        <EditText 
-	        android:id="@+id/s4"
-	        android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:layout_weight="0.4"
-            android:singleLine="true"
-            android:hint="@string/t6"
-        />
-
-        
-        <!--<Spinner
-            android:id="@+id/s4x"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/t644"
-            android:layout_weight="0.6"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:prompt="@string/tunit" />-->
-
-           <TextView
-               android:id="@+id/s4xtx"
-               android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
-               android:layout_weight="0.6"
-               android:textColor="#000000"
-               android:text="Square Metres"
-               android:textSize="16sp" />
-        
-        </LinearLayout>
-        
-          <TextView
-            android:id="@+id/nomi31"
-            android:layout_below="@+id/s2q1"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:text="@string/t5"
-            android:textSize="16sp" />
-        
-        
-          
-          <Spinner
-            android:id="@+id/s3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nomi31"
-            android:layout_alignLeft="@+id/nomi"
-              style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:prompt="@string/t5" /><!-- android:entries="@array/t31"-->
-
-          <TextView
-            android:id="@+id/nomi311"
-            android:layout_below="@+id/s3"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:text="@string/t51"
-            android:textSize="16sp" />
-        
-        
-          
-          <Spinner
-            android:id="@+id/s31"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nomi311"
-            android:layout_alignLeft="@+id/nomi"
-              style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:entries="@array/t311"
-            android:prompt="@string/t51" />
-          
-          
-          <EditText 
-	        android:id="@+id/s8"
-	        android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/s31"
-            android:layout_marginTop="3dp"
-            android:layout_alignLeft="@+id/nomi"
-            android:inputType="text"
-            android:enabled="false"
-              android:visibility="gone"
-            android:singleLine="true"
-	        android:hint="@string/s8a"
-        />
-          
-          
-          
-          <TextView
-            android:id="@+id/nomi312"
-            android:layout_below="@+id/s8"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:text="@string/t52"
-            android:textSize="16sp" />
-        
-        
-          
-          <Spinner
-            android:id="@+id/s312"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nomi312"
-              style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_alignLeft="@+id/nomi"
-            android:prompt="@string/t52" /><!--android:entries="@array/t312"-->
-        
-          <TextView
-            android:id="@+id/nomi313"
-            android:layout_below="@+id/s312"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:text="@string/t53"
-            android:textSize="16sp" />
-        
-        
-          
-          <Spinner
-            android:id="@+id/s313"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nomi313"
-              style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_alignLeft="@+id/nomi"
-            android:entries="@array/t313"
-            android:prompt="@string/t53" />
-        
-        
-        
-          
-          
-          
-        
-        <TextView
-            android:id="@+id/nomi33"
-            android:layout_below="@+id/s313"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:text="@string/t12"
-            android:textSize="16sp" />
-        
-       
-        
-        <RadioGroup
-	        android:id="@+id/radiops2"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/nomi33"
-	        android:layout_marginTop="3dp"
-	        android:layout_marginLeft="10dp"
-	        android:layout_marginRight="10dp"
-	        android:orientation="horizontal">
-	        
-        <RadioButton
-            android:id="@+id/neww"
-            android:layout_width="match_parent"
-            android:background="@drawable/ybb"
-            android:button="@null"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:checked="true"
-            android:gravity="center"
-            android:textColor="@drawable/a"
-            android:text="@string/tn" />
-
-        <RadioButton
-            android:id="@+id/prevv"
-            android:layout_width="match_parent"
-            android:background="@drawable/ybb"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:button="@null"
-            android:textColor="@drawable/a"
-            android:text="@string/ty" />
-        </RadioGroup>
-
-
-    <TextView
-        android:id="@+id/nomi33s"
-        android:layout_below="@+id/radiops2"
-        android:layout_width="wrap_content"
-        android:layout_alignLeft="@+id/nomi"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#000000"
-        android:text="@string/t12s"
-        android:textSize="16sp" />
-
-
-
-    <RadioGroup
-        android:id="@+id/radiops2s"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nomi33s"
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/newws"
-            android:layout_width="match_parent"
-            android:background="@drawable/ybb"
-            android:button="@null"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:checked="true"
-            android:gravity="center"
-            android:textColor="@drawable/a"
-            android:text="@string/tns" />
-
-        <RadioButton
-            android:id="@+id/prevvs"
-            android:layout_width="match_parent"
-            android:background="@drawable/ybb"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:button="@null"
-            android:textColor="@drawable/a"
-            android:text="@string/tys" />
-    </RadioGroup>
-
-    <Spinner
-        android:id="@+id/s33s"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/radiops2s"
-        android:layout_marginTop="10dp"
-        android:layout_alignLeft="@+id/nomi"
-        android:enabled="false"
-        android:visibility="gone"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:entries="@array/t33s"
-        android:prompt="@string/t51s" />
-
-
-    <EditText
-        android:id="@+id/s8s"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/s33s"
-        android:layout_marginTop="5dp"
-        android:layout_alignLeft="@+id/nomi"
-        android:inputType="text"
-        android:enabled="false"
-        android:visibility="gone"
-        android:singleLine="true"
-        android:hint="@string/s8a"
-        />
-
-
-        <TextView
-            android:id="@+id/nomi31e"
-            android:layout_below="@+id/s8s"
-            android:layout_width="wrap_content"
-            android:layout_alignLeft="@+id/nomi"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:text="@string/t16"
-            android:textSize="16sp" />
-        
-          <EditText 
-	        android:id="@+id/s7"
-	        android:layout_width="fill_parent"
-	        android:layout_height="170dp"
-            android:layout_below="@+id/nomi31e"
-            android:background="@drawable/comline"
-            android:inputType="textMultiLine"
-            android:gravity="top"
-            android:padding="4dp"
-            android:layout_marginTop="3dp"
-            android:layout_margin="1dp"
-            android:layout_alignLeft="@+id/nomi"
-            android:hint="@string/t16"
-        />
-		
-		
-		<TextView
-            android:id="@+id/nomi12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:textColor="#000000"
-			android:layout_below="@+id/s7"
-            android:layout_alignLeft="@+id/nomi"
-            android:textSize="16sp"
-            android:text="Scenario Photograph" />
 
         <RelativeLayout
-            android:id="@+id/profpic"
             android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/nomi12"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:orientation="horizontal">
+            android:layout_marginEnd="3dp"
+            android:orientation="vertical"
+            >
 
-            <ImageView
-                android:id="@+id/s12pic"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/noimage"
-                android:layout_alignParentLeft="true"
+            <TextView
+                android:id="@+id/nomi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="#000000"
+                android:text="Invasive Species :      "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/s1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="Invasive Species"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layout_toRightOf="@+id/nomi"
+
                 />
 
-            <Button
-                android:id="@+id/bfopic"
-                android:layout_width="150dp"
-                android:layout_centerInParent="true"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/comlinee"
-                android:text="Take Photo"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/s87"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:enabled="false"
+                android:visibility="gone"
+                android:singleLine="true"
+                android:hint="@string/s8a"
+                android:layout_below="@+id/nomi"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+
+
+
+            <TextView
+                android:id="@+id/nosrf"
+                android:layout_below="@+id/s87"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:textColor="#000000"
+                android:text="@string/t10"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/s6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:visibility="gone"
+                android:layout_below="@+id/nosrf"
+                android:layout_alignParentStart="true"
+                android:entries="@array/t11"
+                android:prompt="@string/t10" />
+
+
+            <TextView
+                android:id="@+id/nomi30"
+                android:layout_below="@+id/s6"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:textColor="#000000"
+                android:text="@string/t4"
+                android:textSize="16sp" />
+
+
+            <LinearLayout
+                android:id="@+id/s2q"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomi30"
+                android:layout_marginTop="3dp"
+                android:weightSum="1"
+                android:layout_alignParentStart="@+id/nomi"
+                >
+
+                <EditText
+                    android:id="@+id/s2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:layout_weight="0.4"
+                    android:singleLine="true"
+                    android:hint="@string/t4"
+                    />
+
+                <!-- <Spinner
+                    android:id="@+id/s2x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/t644"
+                     style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_weight="0.6"
+                    android:prompt="@string/tunit" />-->
+
+                <TextView
+                    android:id="@+id/s2xtx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:textColor="#000000"
+                    android:text="Square Metres"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/nomi32"
+                android:layout_below="@+id/s2q"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:textColor="#000000"
+                android:text="@string/t6"
+                android:textSize="16sp" />
+
+
+            <LinearLayout
+                android:id="@+id/s2q1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_below="@+id/nomi32"
+                android:layout_marginTop="3dp"
+                android:weightSum="1"
+                android:layout_alignParentStart="@+id/nomi"
+                >
+
+                <EditText
+                    android:id="@+id/s4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:layout_weight="0.4"
+                    android:singleLine="true"
+                    android:hint="@string/t6"
+                    />
+
+
+                <!--<Spinner
+                    android:id="@+id/s4x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/t644"
+                    android:layout_weight="0.6"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:prompt="@string/tunit" />-->
+
+                <TextView
+                    android:id="@+id/s4xtx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:textColor="#000000"
+                    android:text="Square Metres"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/nomi31"
+                android:layout_below="@+id/s2q1"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="@string/t5"
+                android:textSize="16sp" />
+
+
+            <Spinner
+                android:id="@+id/s3"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomi31"
+                android:layout_alignParentStart="@+id/nomi"
+                android:prompt="@string/t5" /><!-- android:entries="@array/t31"-->
+
+            <TextView
+                android:id="@+id/nomi311"
+                android:layout_below="@+id/s3"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="@string/t51"
+                android:textSize="16sp" />
+
+
+
+            <Spinner
+                android:id="@+id/s31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomi311"
+                android:layout_alignParentStart="@+id/nomi"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:entries="@array/t311"
+                android:prompt="@string/t51" />
+
+
+            <EditText
+                android:id="@+id/s8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/s31"
+                android:layout_marginTop="3dp"
+                android:layout_alignParentStart="@+id/nomi"
+                android:inputType="text"
+                android:enabled="false"
+                android:visibility="gone"
+                android:singleLine="true"
+                android:hint="@string/s8a"
+                />
+
+
+
+            <TextView
+                android:id="@+id/nomi312"
+                android:layout_below="@+id/s8"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="@string/t52"
+                android:textSize="16sp" />
+
+
+
+            <Spinner
+                android:id="@+id/s312"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomi312"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_alignParentStart="@+id/nomi"
+                android:prompt="@string/t52" /><!--android:entries="@array/t312"-->
+
+            <TextView
+                android:id="@+id/nomi313"
+                android:layout_below="@+id/s312"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="@string/t53"
+                android:textSize="16sp" />
+
+
+            <Spinner
+                android:id="@+id/s313"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomi313"
+                android:layout_alignParentStart="@+id/nomi"
+                android:entries="@array/t313"
+                android:prompt="@string/t53" />
+
+            <TextView
+                android:id="@+id/nomi33"
+                android:layout_below="@+id/s313"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="@string/t12"
+                android:textSize="16sp" />
+
+
+
+            <RadioGroup
+                android:id="@+id/radiops2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomi33"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/neww"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ybb"
+                    android:button="@null"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:textColor="@drawable/a"
+                    android:text="@string/tn" />
+
+                <RadioButton
+                    android:id="@+id/prevv"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ybb"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:textColor="@drawable/a"
+                    android:text="@string/ty" />
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/nomi33s"
+                android:layout_below="@+id/radiops2"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="@string/t12s"
+                android:textSize="16sp" />
+
+
+
+            <RadioGroup
+                android:id="@+id/radiops2s"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomi33s"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/newws"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ybb"
+                    android:button="@null"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:textColor="@drawable/a"
+                    android:text="@string/tns" />
+
+                <RadioButton
+                    android:id="@+id/prevvs"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ybb"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:textColor="@drawable/a"
+                    android:text="@string/tys" />
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/s33s"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiops2s"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentStart="@+id/nomi"
+                android:enabled="false"
+                android:visibility="gone"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:entries="@array/t33s"
+                android:prompt="@string/t51s" />
+
+
+            <EditText
+                android:id="@+id/s8s"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/s33s"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentStart="@+id/nomi"
+                android:inputType="text"
+                android:enabled="false"
+                android:visibility="gone"
+                android:singleLine="true"
+                android:hint="@string/s8a"
+                />
+
+
+            <TextView
+                android:id="@+id/nomi31e"
+                android:layout_below="@+id/s8s"
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="@string/tcom"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/s7"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_below="@+id/nomi31e"
+                android:layout_alignParentStart="@+id/nomi"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/comline"
+                android:gravity="top"
+                android:hint="@string/t16"
+                android:inputType="textMultiLine"
+                android:padding="4dp" />
+
+
+            <TextView
+                android:id="@+id/nomi12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="#000000"
+                android:layout_below="@+id/s7"
+                android:layout_alignParentStart="@+id/nomi"
+                android:textSize="16sp"
+                android:text="Scenario Photograph" />
+
+            <RelativeLayout
+                android:id="@+id/profpic"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/nomi12"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/s12pic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/noimage"
+                    android:layout_alignParentLeft="true"
+                    />
+
+                <Button
+                    android:id="@+id/bfopic"
+                    android:layout_width="150dp"
+                    android:layout_centerInParent="true"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/comlinee"
+                    android:text="Take Photo"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+
+
+
+
         </RelativeLayout>
+    </ScrollView>
 
-          
-        
-        
-         
-         
-</RelativeLayout>
-</ScrollView>
 
-       
 
-      
-      <RelativeLayout
-        android:layout_width="fill_parent"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_gravity="bottom|center_horizontal"
         android:orientation="horizontal" >
-        
-       <Button
+
+        <Button
             android:id="@+id/backo"
             android:layout_width="100dp"
             android:layout_alignParentLeft="true"
@@ -553,20 +532,20 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/rback" />
-       
-       <Button
+
+        <Button
             android:id="@+id/doneo"
             android:layout_margin="10dp"
             android:layout_width="100dp"
-             android:background="@drawable/comlinee"
+            android:background="@drawable/comlinee"
             android:layout_alignParentRight="true"
             android:textColor="@android:color/background_light"
             android:layout_height="wrap_content"
             android:text="@string/savo" />
-       
-       
-      
-       
-       </RelativeLayout>
-       
- </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

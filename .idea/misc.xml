@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/comline.xml" value="0.2140625" />
+        <entry key="app/src/main/res/drawable/comlinee2.xml" value="0.2140625" />
+        <entry key="app/src/main/res/drawable/comlineemain.xml" value="0.160546875" />
+        <entry key="app/src/main/res/drawable/diastyle.xml" value="0.2140625" />
+        <entry key="app/src/main/res/layout/aboutus.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/image_spinner_kolek.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/kolek.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/loggah.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/loggah_new.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mapicha.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/mbaind_dialog2.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/mbaind_forgot_password.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/mbaind_net.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/mbaind_newuser.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/mbaind_no_org.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/mbaind_nonet3.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/mbaind_nowe.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/mbaind_nowe2.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/mbaind_sav.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mbaind_sent.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mbaind_user_saved.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/regista.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/regista_new.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/seemap.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/selchat.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/splashscreen.xml" value="0.16" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="10">
+        <list size="14">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
@@ -16,12 +50,16 @@
           <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.Nullable" />
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
+          <item index="10" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="io.reactivex.annotations.Nullable" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.Nullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="9">
+        <list size="14">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
@@ -31,6 +69,11 @@
           <item index="6" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
           <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
+          <item index="9" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="10" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+          <item index="11" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
+          <item index="12" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="lombok.NonNull" />
         </list>
       </value>
     </option>

@@ -35,12 +35,10 @@ package com.servir.invasivespecies;
         import com.google.android.gms.location.LocationRequest;
         import com.google.android.gms.location.LocationServices;
 
-        import android.*;
         import android.app.Activity;
         import android.app.Dialog;
         import android.app.ProgressDialog;
         import android.content.Context;
-        import android.content.DialogInterface;
         import android.content.Intent;
         import android.content.IntentSender;
         import android.content.pm.PackageManager;
@@ -55,9 +53,9 @@ package com.servir.invasivespecies;
         import android.os.Build;
         import android.os.Bundle;
         import android.os.Environment;
-        import android.support.v4.app.ActivityCompat;
-        import android.support.v4.content.ContextCompat;
-        import android.support.v7.app.AppCompatActivity;
+        import androidx.core.app.ActivityCompat;
+        import androidx.core.content.ContextCompat;
+        import androidx.appcompat.app.AppCompatActivity;
         import android.util.Base64;
         import android.util.Log;
         import android.view.KeyEvent;
@@ -69,7 +67,6 @@ package com.servir.invasivespecies;
         import android.view.animation.Animation;
         import android.view.animation.AnimationUtils;
         import android.widget.Button;
-        import android.widget.EditText;
         import android.widget.ImageView;
         import android.widget.LinearLayout;
         import android.widget.TextSwitcher;
@@ -836,7 +833,7 @@ public class MainActivity extends AppCompatActivity
 
     public void diambaidweni2(View v) {
         final Dialog mbott = new Dialog(MainActivity.this, android.R.style.Theme_Translucent_NoTitleBar);
-        mbott.setContentView(R.layout.mbaind_nowe2);
+        mbott.setContentView(R.layout.mbaind_no_org);
         mbott.setCanceledOnTouchOutside(false);
         mbott.setCancelable(false);
         WindowManager.LayoutParams lp = mbott.getWindow().getAttributes();

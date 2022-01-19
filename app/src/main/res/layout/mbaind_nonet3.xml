@@ -12,7 +12,7 @@
     android:layout_gravity="center"
     android:layout_margin="10dp"
     android:text="@string/badnet"
-    android:textColor="@android:color/white"
+    android:textColor="@color/dialogcomtxt"
     android:textSize="15sp"
     android:textStyle="bold"
     />

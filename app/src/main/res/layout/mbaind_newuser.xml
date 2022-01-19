@@ -4,7 +4,7 @@
     android:layout_gravity="center"
     android:background="@drawable/diastyle"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >gdgh
+    android:orientation="vertical" >
 <TextView 
     android:id="@+id/mbatxte"
     android:layout_width="wrap_content"
@@ -12,7 +12,7 @@
     android:layout_gravity="center"
     android:layout_margin="10dp"
     android:text="New installation detected. Had you registered before?"
-    android:textColor="@android:color/white"
+    android:textColor="@color/dialogcomtxt"
     android:textSize="15sp"
     android:textStyle="bold"
     />
@@ -25,14 +25,13 @@
         <Button
             android:id="@+id/rback"
             android:layout_width="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/bcomlinee"
             android:text="Yes"
-            android:textColor="#ffffff"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            />
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/sawa"

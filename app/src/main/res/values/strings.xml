@@ -27,6 +27,8 @@
     <string name="emailad">E-mail Address</string>
     <string name="countrii">Country: </string>
     <string name="regista">Register</string>
+    <string name="org">Organization</string>
+    <string name="cons">Conservancy</string>
 
     <string name="rback">Back</string>
     <string name="snt">Data Sent Successfully</string>
@@ -36,6 +38,7 @@
 
     <string name="badnet">Please ensure your Internet connection is active.</string>
     <string name="notreg">Please register first for better services</string>
+    <string name="notorg">Please ensure you select an organisation and a conservancy first.</string>
     <string name="mbaindi2">You have successfully registered</string>
 
     <string name="t1">Data Collection</string>
@@ -205,6 +208,7 @@
     <string name="t14">Foundation Excavation</string>
     <string name="t15">Foundation Concreting</string>
     <string name="t16">Optional</string>
+    <string name="tcom">Comments</string>
 
     <string name="ty">Accessible</string>
     <string name="tn">Inaccessible</string>
@@ -271,5 +275,50 @@
     <string name="savo">Save</string>
     <string name="savv">Data has been successfully saved. Remember to post all data by clicking on "Send Bulk Data".</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="err_msg_name">Please enter your full name</string>
+    <string name="err_msg_email">Please enter a valid email address</string>
+    <string name="err_msg_phone">Please enter a valid phone number</string>
+    <string name="err_msg_org" translatable="false">Please enter your organisation name</string>
+    <string name="err_msg_role" translatable="false">Please enter your role/position/department</string>
+    <string name="err_msg_password">Please enter a password.</string>
+    <string name="err_msg_password2">Please make sure the passwords match.</string>
+    <string name="err_msg_code">Please use the code sent to your email.</string>
+
+    <string name="signin_details_wrong">Incorrect detail used. Contact the administrator for help.</string>
+    <string name="signin_password_wrong">Please use the right password.</string>
+    <string name="signin_userinactive">Please contact the administrator for approval.</string>
+    <string name="signin_usersuspended">Please contact the administrator. Account is suspended.</string>
+    <string name="signin_internet_off">Kindly turn on internet to receive updates.</string>
+    <string name="signin_fill_all">Please fill in the login detail.</string>
+    <string name="signin_setup_ctd">Please wait as setup is done.</string>
+    <string name="signin_dev_error">E434: Please contact the administrator. </string>
+    <string name="signin_message">Signing in…</string>
+    <string name="signin_locations">Loading Data…</string>
+    <string name="signin_getcode">Sending code…</string>
+    <string name="signin_setpass">Changing password…</string>
+    <string name="signin_passwordchanged">Password changed successfully</string>
+    <string name="signin_setup">Fetching records…</string>
+
+    <string name="signup_message">Registering…</string>
+
+    <string name="constantori_nomedia">Folders not created. Ensure all permissions enabled.</string>
+    <string name="constantori_nomedia_p">Please ensure all permissions enabled.</string>
+    <string name="constantori_nowrite_a">Folders not created. Device is write-protected.</string>
+    <string name="constantori_photo">Camera error. Take photograph again.</string>
+    <string name="constantori_sim">No SIM Card!</string>
+    <string name="constantori_perm_enabled">Permissions enabled.</string>
+    <string name="constantori_perm_denied">Permission(s) not enabled.</string>
+    <string name="constantori_map_miss">Mapping farm option is selected but not done.</string>
+    <string name="constantori_form_miss">Form data must be saved first!</string>
+    <string name="constantori_photo_miss">Photograph taking option is selected but not done.</string>
+
+    <string name="general_googleplay">Google Play Services is out-of-date/disabled on your phone.</string>
+    <string name="general_location">GPS Location services must be enabled.</string>
+    <string name="general_permission">This application needs to access your :</string>
+    <string name="general_permission_enabled">All permissions enabled.</string>
+    <string name="general_permission_denied">Some permission(s) denied.</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
 
 </resources>

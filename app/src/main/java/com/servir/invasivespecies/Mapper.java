@@ -4,7 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
@@ -18,35 +17,37 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.servir.invasivespecies.utils.Constantori;
+
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 
 @SuppressLint("NewApi") public class Mapper extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, OnMapReadyCallback {
 
-    static double longitude;
-    static double latitude;
+    static double longitude = 0.0;
+    static double latitude = 0.0;
     Button backo;
+    Context context = this;
     ProgressDialog mpd3;
     View View;
-    int kwanza = 1;
+
 
     public static final int confail = 9000;
     LocationRequest mlr;
@@ -68,6 +69,7 @@ import android.widget.Toast;
     }
 
     LatLng niko = new LatLng(-1.2920659,36.82194619999996);
+    int kwanza = 1;
 
 /*
 	    PolylineOptions pline = new PolylineOptions();
@@ -83,22 +85,15 @@ import android.widget.Toast;
         setContentView(R.layout.seemap);
         overridePendingTransition(0,0);
 
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#66000000")));
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
-
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         createlocreq();
 
         backo = (Button) findViewById(R.id.snapppe);
-        Bundle a = getIntent().getExtras();
-        Bundle b = getIntent().getExtras();
-        latitude = a.getDouble("lattt");
-        longitude = b.getDouble("lonnn");
 
-
-
-        if (!isgpsa()){
+        if (!Constantori.isgpsa(this)){
             Toast.makeText(this, "Google Play Services is disable on your phone", Toast.LENGTH_LONG).show();
         }
 
@@ -145,7 +140,7 @@ import android.widget.Toast;
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent (Mapper.this, MainActivity.class);
+                Intent intent = new Intent (context, MainActivity.class);
                 startActivity(intent);
 
             }
@@ -187,17 +182,7 @@ import android.widget.Toast;
 
     }
 
-    private boolean isgpsa() {
-        // TODO Auto-generated method stub
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if(ConnectionResult.SUCCESS == status){
-            return true;
-        }else{
-            GooglePlayServicesUtil.getErrorDialog(status, this,REQUEST_CODE_RECOVER_PLAY_SERVICES).show();
 
-            return false;
-        }
-    }
 
 
     @Override
@@ -213,8 +198,8 @@ import android.widget.Toast;
         // TODO Auto-generated method stub
 
         if ( Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission( Mapper.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission( Mapper.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(Mapper.this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
@@ -265,7 +250,7 @@ import android.widget.Toast;
             }
 
         }else{
-            diambaidno(View);
+            Constantori.dlgNoNet(View, context);
         }
     }
 
@@ -291,8 +276,6 @@ import android.widget.Toast;
         Log.e("lat", String.valueOf(longitude));
 
 
-
-
         if (null != cl){
             latitude = cl.getLatitude();
             longitude = cl.getLongitude();
@@ -305,12 +288,9 @@ import android.widget.Toast;
 
     public void sowus(){
 
-
-
-
         if ( Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission( Mapper.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission( Mapper.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(Mapper.this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
@@ -323,6 +303,7 @@ import android.widget.Toast;
 
         } else if (googleMap != null) {
 
+            googleMap.setPadding(0,100,0,0);
             googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             googleMap.setMyLocationEnabled(true);
             niko = new LatLng(latitude, longitude);
@@ -362,7 +343,7 @@ import android.widget.Toast;
 
 
         }else{
-            Toast.makeText(Mapper.this, "Accept to enable map view", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Accept to enable map view", Toast.LENGTH_LONG).show();
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
 
@@ -374,68 +355,6 @@ import android.widget.Toast;
     @Override
     public void onBackPressed(){
 
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-
-
-        if (id == R.id.itop1) {
-            Intent intent = new Intent (Mapper.this, Regista.class);
-            intent.putExtra("lattt", String.valueOf(latitude));
-            intent.putExtra("lonnn", String.valueOf(longitude));
-            intent.putExtra("reggo","main");
-            startActivity(intent);
-            return true;
-        }
-
-        if (id == R.id.itop2) {
-            Intent intent = new Intent (Mapper.this, AboutUs.class);
-            startActivity(intent);
-            return true;
-        }
-
-
-
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-    public void diambaidno(View v) {
-        final Dialog mbott = new Dialog(Mapper.this, android.R.style.Theme_Translucent_NoTitleBar);
-        mbott.setContentView(R.layout.mbaind_nonet3);
-        mbott.setCanceledOnTouchOutside(false);
-        mbott.setCancelable(false);
-        WindowManager.LayoutParams lp = mbott.getWindow().getAttributes();
-        lp.dimAmount=0.85f;
-        mbott.getWindow().setAttributes(lp);
-        mbott.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        mbott.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
-        Button mbaok = (Button) mbott.findViewById(R.id.mbabtn1);
-        mbaok.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                mbott.dismiss();
-            }
-        });
-        mbott.show();
     }
 
     public void onResume(){
@@ -470,6 +389,7 @@ import android.widget.Toast;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_RECOVER_PLAY_SERVICES) {
             if (resultCode == RESULT_OK) {
                 // Make sure the app is not already connected or attempting to connect
@@ -478,7 +398,7 @@ import android.widget.Toast;
                     mgac.connect();
                 }
             } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(Mapper.this, "Google Play Services must be installed.",
+                Toast.makeText(context, "Google Play Services must be installed.",
                         Toast.LENGTH_SHORT).show();
                 //finish();
             }
@@ -490,14 +410,15 @@ import android.widget.Toast;
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions,
                                            int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_LOCATION) {
-            if(grantResults.length == 1
+            if (grantResults.length == 1
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                 PendingResult<Status> pr = LocationServices.FusedLocationApi.requestLocationUpdates(mgac, mlr, this);
 
-                if (kwanza==1){
-                    niko = new LatLng(latitude,longitude);
+                if (kwanza == 1) {
+                    niko = new LatLng(latitude, longitude);
                     if (googleMap == null) {
                         SupportMapFragment mapFrag = (SupportMapFragment) Mapper.this.getSupportFragmentManager().findFragmentById(R.id.map);
                         mapFrag.getMapAsync(Mapper.this);
@@ -508,7 +429,7 @@ import android.widget.Toast;
 
 
             } else {
-                Toast.makeText(Mapper.this, "GPS Location services must be enabled.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "GPS Location services must be enabled.", Toast.LENGTH_SHORT).show();
             }
         }
     }
