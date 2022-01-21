@@ -594,9 +594,17 @@ import org.json.JSONObject;
         for (GeoJsonFeature feature : layer.getFeatures()) {
 
             String id = feature.getProperty(Constantori.KEY_DATNO);
-            String rec_id = feature.getProperty(Constantori.KEY_LOCORG);
-            List<HashMap<String, String>> alldata_ = db.GetAllData(Constantori.TABLE_DAT, Constantori.KEY_SURVEYJSON_ID, id);
-            String name = alldata_.get(0).get(Constantori.KEY_DATFTRNAME);
+            String snippet_1 = id.split("_")[1];
+            String snippet_2 = id.split("_")[2];
+
+            String snippet = "";
+            if(Constantori.isNumeric(snippet_2)){
+                snippet = snippet_1;
+            }else{
+                snippet = snippet_1 + " " + snippet_2;
+            }
+
+            String sppname = feature.getProperty(Constantori.KEY_DATFTRNAME);
 
             String coords = feature.getGeometry().getGeometryObject().toString();
             String[] coords_array = coords.split(":");
@@ -606,7 +614,7 @@ import org.json.JSONObject;
             Double lat = Double.valueOf(coords_array_2[0].trim());
             Double lon = Double.valueOf(coords_array_2[1].trim());
 
-            addMapDataItems(lat,lon,name,rec_id);
+            addMapDataItems(lat,lon,sppname,snippet);
 
             //Log.e(Constantori.APP_ERROR_PREFIX+"_Layer_Coords", coords_alone.substring(1,coords_alone.length()-1));
 
