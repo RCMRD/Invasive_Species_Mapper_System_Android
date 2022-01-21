@@ -321,6 +321,30 @@
             android:textSize="16sp" />
 
         <ImageView
+            android:id="@+id/im14"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/tv13"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/orange_leaf_croton" />
+
+        <TextView
+            android:id="@+id/tv14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="Orange Leaf Croton"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/im14"
+            android:textSize="16sp" />
+
+        <ImageView
             android:id="@+id/imOther"
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -329,7 +353,7 @@
             android:padding="5dp"
             android:scaleType="fitXY"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/tv13"
+            android:layout_below="@+id/tv14"
             />
 
         <TextView

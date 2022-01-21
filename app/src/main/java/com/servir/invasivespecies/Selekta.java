@@ -20,7 +20,7 @@ public class Selekta extends AppCompatActivity {
 	Button btnSelect;
 	String datno, locno, s_Lat, s_Lon, s001;
 	
-	ImageView im1, im2, im3, im4, im5, im6, im7, im8, im9, im10, im11, im12, im13;
+	ImageView im1, im2, im3, im4, im5, im6, im7, im8, im9, im10, im11, im12, im13, im14;
     ImageView imOther;
 
 
@@ -49,6 +49,7 @@ public class Selekta extends AppCompatActivity {
 		im11 = (ImageView) findViewById(R.id.im11);
 		im12 = (ImageView) findViewById(R.id.im12);
 		im13 = (ImageView) findViewById(R.id.im13);
+		im14 = (ImageView) findViewById(R.id.im14);
 		imOther = (ImageView) findViewById(R.id.imOther);
 
 		doDBStuff("Entered");
@@ -70,6 +71,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Acacia Reficiens";
 			}
@@ -92,6 +94,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Opuntia Species";
 			}
@@ -114,6 +117,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Lantana Camara";
 			}
@@ -136,6 +140,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Prosopis Species";
 			}
@@ -158,6 +163,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Water Hyacinth";
 			}
@@ -180,6 +186,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Chromolaena Odorata";
 			}
@@ -202,6 +209,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Parthenium Hysterophorus";
 			}
@@ -224,6 +232,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Prosopis Juliflora Species";
 			}
@@ -246,6 +255,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Opuntia Stricta";
 			}
@@ -268,6 +278,7 @@ public class Selekta extends AppCompatActivity {
 				im11.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Tithonia Diversifolia Species";
 			}
@@ -290,6 +301,7 @@ public class Selekta extends AppCompatActivity {
 				im10.setBackground(null);
 				im12.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Camphor Tree";
 			}
@@ -312,6 +324,7 @@ public class Selekta extends AppCompatActivity {
 				im10.setBackground(null);
 				im11.setBackground(null);
 				im13.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Morning Glory";
 			}
@@ -334,8 +347,32 @@ public class Selekta extends AppCompatActivity {
 				im10.setBackground(null);
 				im11.setBackground(null);
 				im12.setBackground(null);
+				im14.setBackground(null);
 				imOther.setBackground(null);
 				s001 = "Sodom Apple";
+			}
+		});
+
+		im14.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im10.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
+				s001 = "Orange Leaf Croton";
 			}
 		});
 
@@ -354,6 +391,11 @@ public class Selekta extends AppCompatActivity {
 				im8.setBackground(null);
 				im9.setBackground(null);
 				im10.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				im14.setBackground(null);
 				s001 = "Other";
 			}
 		});
