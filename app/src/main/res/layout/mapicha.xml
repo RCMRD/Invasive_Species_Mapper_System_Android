@@ -163,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="10dp"
-            android:src="@drawable/partenium"
+            android:src="@drawable/parthenium"
             android:padding="5dp"
             android:scaleType="fitXY"
             android:layout_centerHorizontal="true"
@@ -228,13 +228,15 @@
             android:id="@+id/im10"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/tithonia"
+            android:layout_below="@+id/tv9"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:padding="5dp"
             android:scaleType="fitXY"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/tv9"
-            />
+            android:src="@drawable/tithonia" />
 
         <TextView
             android:id="@+id/tv10"
@@ -250,22 +252,94 @@
             android:id="@+id/im11"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/other2"
+            android:layout_below="@+id/tv10"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:padding="5dp"
             android:scaleType="fitXY"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/tv10"
-            />
+            android:src="@drawable/camphor_tree" />
 
         <TextView
             android:id="@+id/tv11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:text="Other"
+            android:text="Camphor Tree"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/im11"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/im12"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/tv11"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/morning_glory" />
+
+        <TextView
+            android:id="@+id/tv12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="Morning Glory"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/im12"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/im13"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/tv12"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/sodom_apple" />
+
+        <TextView
+            android:id="@+id/tv13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="Sodom Apple"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/im13"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imOther"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/other2"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv13"
+            />
+
+        <TextView
+            android:id="@+id/tvOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="Other"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/imOther"
             android:textSize="16sp" />
 
     </RelativeLayout>
@@ -277,24 +351,12 @@
         android:layout_margin="10dp"
         android:layout_height="wrap_content"
         >
-
-    
-   <!-- <Button
-        android:id="@+id/rback"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/comlinee"
-        android:text="@string/rback"
-        android:textColor="@android:color/background_light" />-->
     
     <Button
         android:id="@+id/selecto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/comlinee"
         android:text="Continue"

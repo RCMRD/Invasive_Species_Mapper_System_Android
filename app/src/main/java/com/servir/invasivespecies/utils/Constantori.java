@@ -84,14 +84,16 @@ public class Constantori {
     //forgot password
     public static final String KEY_USERCODE = "_usercode";
 
+    //fetch conservancies and orgs
+    public static final String DATA_LOCFETCH = "getLocs";
+    public static final String data_LOCFETCH = "fetchLocs";
+
     //Fields - Location table - org, conservancies, country
     public static final String KEY_LOCORG = "_locorg";
-    public static final String KEY_LOCNO = "_locno";
+    public static final String KEY_LOCNO = "_locno"; //user specified have ("locno" + userref + date)
     public static final String KEY_LOCCON = "_loccon";
     public static final String KEY_LOCCTRY = "_locctry";
-    public static final String KEY_LOCINDEX = "_locindex";
     public static final String KEY_LOCRID = "_locrid";
-    public static final String KEY_LOCSTATUS = "_locstat";
 
     //Fields - Data table
     public static final String KEY_DATRID = "_datrid";
@@ -139,11 +141,7 @@ public class Constantori {
     public static final String INTENT_LON = "i_lon";
     public static final String INTENT_DATNO = "i_datno";
     public static final String INTENT_LOCNO = "i_locno";
-    public static final String INTENT_LOCREG = "i_locreg";
-    public static final String INTENT_TEL = "i_phone";
-    public static final String INTENT_EMAIL = "i_email";
-    public static final String INTENT_PASSWORD = "i_pwd";
-    public static final String INTENT_NAME = "i_name";
+    public static final String INTENT_SPECIES = "i_species";
 
     //received response keys
     public static final String RECEIVED_SUCCESS = "success";

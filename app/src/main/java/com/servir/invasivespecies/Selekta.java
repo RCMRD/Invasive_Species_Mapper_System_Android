@@ -11,31 +11,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.servir.invasivespecies.utils.Constantori;
+
 
 public class Selekta extends AppCompatActivity {
 	
 
-	Button tuma;
-	String datno="";
-	String sax="";
-	String say="";
-	String xcon="";
-	String xorg="";
-	String s001="";
-	String rdatno;
-
-
-	ImageView im1;
-    ImageView im2;
-    ImageView im3;
-    ImageView im4;
-    ImageView im5;
-    ImageView im6;
-    ImageView im7;
-    ImageView im8;
-    ImageView im9;
-    ImageView im10;
-    ImageView im11;
+	Button btnSelect;
+	String datno, locno, s_Lat, s_Lon, s001;
+	
+	ImageView im1, im2, im3, im4, im5, im6, im7, im8, im9, im10, im11, im12, im13;
+    ImageView imOther;
 
 
 	@Override
@@ -48,7 +34,7 @@ public class Selekta extends AppCompatActivity {
 		getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
-		tuma = (Button) findViewById(R.id.selecto);
+		btnSelect = (Button) findViewById(R.id.selecto);
 
 		im1 = (ImageView) findViewById(R.id.im1);
 		im2 = (ImageView) findViewById(R.id.im2);
@@ -61,19 +47,11 @@ public class Selekta extends AppCompatActivity {
 		im9 = (ImageView) findViewById(R.id.im9);
 		im10 = (ImageView) findViewById(R.id.im10);
 		im11 = (ImageView) findViewById(R.id.im11);
+		im12 = (ImageView) findViewById(R.id.im12);
+		im13 = (ImageView) findViewById(R.id.im13);
+		imOther = (ImageView) findViewById(R.id.imOther);
 
-		Intent intentqa = getIntent();
-		sax = intentqa.getStringExtra("lonnn");
-		Intent intentqsa = getIntent();
-		say = intentqsa.getStringExtra("lattt");
-		Intent intentqdsa = getIntent();
-		datno = intentqdsa.getStringExtra("datno");
-
-		Intent intentorg = getIntent();
-		xorg = intentorg.getStringExtra("orgaa");
-
-		Intent intentcon = getIntent();
-		xcon = intentcon.getStringExtra("consa");
+		doDBStuff("Entered");
 
 		im1.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -90,6 +68,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Acacia Reficiens";
 			}
 		});
@@ -109,6 +90,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Opuntia Species";
 			}
 		});
@@ -128,6 +112,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Lantana Camara";
 			}
 		});
@@ -147,6 +134,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Prosopis Species";
 			}
 		});
@@ -166,6 +156,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Water Hyacinth";
 			}
 		});
@@ -185,6 +178,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Chromolaena Odorata";
 			}
 		});
@@ -204,6 +200,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Parthenium Hysterophorus";
 			}
 		});
@@ -223,6 +222,9 @@ public class Selekta extends AppCompatActivity {
 				im9.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Prosopis Juliflora Species";
 			}
 		});
@@ -242,6 +244,9 @@ public class Selekta extends AppCompatActivity {
 				im8.setBackground(null);
 				im10.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Opuntia Stricta";
 			}
 		});
@@ -261,6 +266,9 @@ public class Selekta extends AppCompatActivity {
 				im8.setBackground(null);
 				im9.setBackground(null);
 				im11.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
 				s001 = "Tithonia Diversifolia Species";
 			}
 		});
@@ -269,7 +277,73 @@ public class Selekta extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
-				im11.setBackground(highlight);
+				im10.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im12.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
+				s001 = "Camphor Tree";
+			}
+		});
+
+		im12.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im10.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				im13.setBackground(null);
+				imOther.setBackground(null);
+				s001 = "Morning Glory";
+			}
+		});
+
+		im13.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				im10.setBackground(highlight);
+				im2.setBackground(null);
+				im3.setBackground(null);
+				im4.setBackground(null);
+				im5.setBackground(null);
+				im1.setBackground(null);
+				im6.setBackground(null);
+				im7.setBackground(null);
+				im8.setBackground(null);
+				im9.setBackground(null);
+				im10.setBackground(null);
+				im11.setBackground(null);
+				im12.setBackground(null);
+				imOther.setBackground(null);
+				s001 = "Sodom Apple";
+			}
+		});
+
+		imOther.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
+				imOther.setBackground(highlight);
 				im2.setBackground(null);
 				im3.setBackground(null);
 				im4.setBackground(null);
@@ -287,18 +361,17 @@ public class Selekta extends AppCompatActivity {
 
 
 
-		tuma.setOnClickListener(new OnClickListener() {
+		btnSelect.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View view) {
 			if (!s001.equals("")) {
-				Intent intent = new Intent(Selekta.this, Colecta.class);
-				intent.putExtra("lattt", say);
-				intent.putExtra("lonnn", sax);
-				intent.putExtra("datno", datno);
-				intent.putExtra("spcs", s001);
-				intent.putExtra("orgaa", xorg);
-				intent.putExtra("consa", xcon);
-					startActivity(intent);
+				Intent intent = new Intent(Selekta.this, Collecta.class);
+				intent.putExtra(Constantori.INTENT_LAT, s_Lat);
+				intent.putExtra(Constantori.INTENT_LON, s_Lon);
+				intent.putExtra(Constantori.INTENT_DATNO, datno);
+				intent.putExtra(Constantori.INTENT_LOCNO, locno);
+				intent.putExtra(Constantori.INTENT_SPECIES, s001);
+				startActivity(intent);
 			}else{
 				Toast.makeText(Selekta.this, "Please select a species first.", Toast.LENGTH_LONG ).show();
 			}
@@ -322,6 +395,31 @@ public class Selekta extends AppCompatActivity {
 				return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+
+	private void doDBStuff(String where){
+
+		switch (where){
+
+			case "Entered":
+
+				Intent intent0 = getIntent();
+				s_Lat = intent0.getStringExtra(Constantori.INTENT_LAT);
+				Intent intent1 = getIntent();
+				s_Lon = intent1.getStringExtra(Constantori.INTENT_LON);
+				Intent intent2 = getIntent();
+				datno = intent2.getStringExtra(Constantori.INTENT_DATNO);
+				Intent intent3 = getIntent();
+				locno = intent3.getStringExtra(Constantori.INTENT_LOCNO);
+
+				break;
+
+			default:
+				break;
+
+		}
+
 	}
 	
 

@@ -66,7 +66,7 @@
         <item>Northern Rangelands Trust</item>
         <item>Laikipia Wildlife Forum</item>
         <item>Maasai Mara Game Reserve</item>
-        <item>Other</item>
+        <item>OTHER</item>
     </string-array>
 
     <string-array name="tcons">
@@ -95,7 +95,6 @@
         <item>	Shurr	</item>
         <item>	Songa	</item>
         <item>	West Gate	</item>
-
         <item>	Naikarra	</item>
         <item>	Talek	</item>
         <item>	Siana	</item>
@@ -116,7 +115,7 @@
         <item>	Olkiramatian	</item>
         <item>	Shompole	</item>
 
-        <item>Other</item>
+        <item>OTHER</item>
     </string-array>
 
 
@@ -279,7 +278,10 @@
     <string name="err_msg_name">Please enter your full name</string>
     <string name="err_msg_email">Please enter a valid email address</string>
     <string name="err_msg_phone">Please enter a valid phone number</string>
-    <string name="err_msg_org" translatable="false">Please enter your organisation name</string>
+    <string name="err_msg_org">Please enter your organisation name</string>
+    <string name="err_msg_org_sel">Please select your organisation name</string>
+    <string name="err_msg_cons">Please enter your conservation name</string>
+    <string name="err_msg_cons_sel">Please select your conservation name</string>
     <string name="err_msg_role" translatable="false">Please enter your role/position/department</string>
     <string name="err_msg_password">Please enter a password.</string>
     <string name="err_msg_password2">Please make sure the passwords match.</string>
@@ -294,7 +296,7 @@
     <string name="signin_setup_ctd">Please wait as setup is done.</string>
     <string name="signin_dev_error">E434: Please contact the administrator. </string>
     <string name="signin_message">Signing in…</string>
-    <string name="signin_locations">Loading Data…</string>
+    <string name="signin_locations">Loading Organisations…</string>
     <string name="signin_getcode">Sending code…</string>
     <string name="signin_setpass">Changing password…</string>
     <string name="signin_passwordchanged">Password changed successfully</string>
@@ -320,5 +322,8 @@
     <string name="general_permission_denied">Some permission(s) denied.</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
+
+    <string name="parcel_loading">Loading…</string>
+    <string name="map_enable">Accept to enable map view</string>
 
 </resources>

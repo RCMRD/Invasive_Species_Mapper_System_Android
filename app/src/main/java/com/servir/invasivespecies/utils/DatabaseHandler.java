@@ -70,9 +70,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + Constantori.KEY_LOCNO + " VARCHAR,"
                 + Constantori.KEY_LOCORG + " VARCHAR,"
                 + Constantori.KEY_LOCCON + " VARCHAR,"
-                + Constantori.KEY_LOCCTRY + " VARCHAR,"
-                + Constantori.KEY_LOCINDEX + " VARCHAR,"
-                + Constantori.KEY_LOCSTATUS + " VARCHAR"
+                + Constantori.KEY_LOCCTRY + " VARCHAR"
                 + ")";
         db.execSQL(CREATE_LOC_TABLE);
 
