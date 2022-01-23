@@ -889,6 +889,8 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                         }else{
                             edtOrg_other.setText("");
                             Tlogorg_other.setVisibility(android.view.View.GONE);
+                            edtCons_other.setText("");
+                            Tlogcons_other.setVisibility(android.view.View.GONE);
                         }
 
                         //populate cons
@@ -1109,6 +1111,9 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
             cons_arr = new ArrayList <String> (Arrays.asList(bareCons));
             cons_arr.add(0,Constantori.SEL_CON);
             String[] cons = cons_arr.toArray(new String[0]);
+
+            //ask edward if I can add this? or remove.
+            cons_arr.add(Constantori.SEL_OTH);
 
             spnCons.setItems(cons);
 

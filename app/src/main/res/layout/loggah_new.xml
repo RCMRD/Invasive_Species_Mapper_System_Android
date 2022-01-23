@@ -85,13 +85,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="top|center"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center|top"
                     android:orientation="vertical">
 
                     <com.jaredrummler.materialspinner.MaterialSpinner
@@ -117,34 +117,13 @@
                         android:maxLines="1"
                         />
 
-                    <!--<com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textILorg"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:theme="@style/CustomDropDownTilStyle">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/actUserorg"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="-4dp"
-                            android:layout_marginRight="-4dp"
-                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:focusable="false"
-                            android:inputType="none"
-                            android:hint="@string/org"
-                            android:maxLines="1"
-                            android:textColor="@color/colorBlackText" />
-                    </com.google.android.material.textfield.TextInputLayout>-->
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textILother_org"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone"
                         android:layout_marginRight="20dp"
                         android:theme="@style/TextLabel">
@@ -187,36 +166,12 @@
 
                         />
 
-                    <!--<com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textILcons"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="20dp"
-                        >
-
-                        <AutoCompleteTextView
-                            android:id="@+id/actUsercons"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:focusable="false"
-                            android:inputType="none"
-                            android:hint="@string/cons"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:textColor="@color/colorBlackText" />
-
-                    </com.google.android.material.textfield.TextInputLayout>-->
-
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textILother_cons"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone"
                         android:layout_marginRight="20dp"
                         android:theme="@style/TextLabel">
@@ -225,7 +180,6 @@
                             android:id="@+id/edtUserother_cons"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:ems="10"
                             android:hint="@string/cons"
                             android:inputType="text"
@@ -293,7 +247,7 @@
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="25dp" />
+                android:layout_height="20dp" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -307,8 +261,6 @@
                     android:id="@+id/logingia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="-4dp"
-                    android:layout_marginRight="-4dp"
                     android:background="@drawable/comlineemain"
                     android:text="LOGIN"
                     android:textAllCaps="false"
@@ -358,6 +310,3 @@
     </LinearLayout>
 
 </RelativeLayout>
-
-
-
