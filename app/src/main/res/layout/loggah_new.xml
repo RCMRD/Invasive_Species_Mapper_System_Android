@@ -29,8 +29,8 @@
             android:layout_height="25dp" />
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:src="@drawable/tree_logo" />
@@ -78,7 +78,7 @@
         <ScrollView
             android:layout_width="300dp"
             android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|top"
             android:layout_weight="1"
             android:scrollbars="vertical">
 
@@ -94,14 +94,36 @@
                     android:layout_gravity="center_horizontal"
                     android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+                        android:id="@+id/spnUserorg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:textColor="@color/colorBlackText"
+                        android:textSize="15sp"
+
+                        android:theme="@style/TextLabel"
+
+                        app:ms_dropdown_height="wrap_content"
+                        app:ms_text_color="@color/colorBlackText"
+                        app:ms_padding_left="5dp"
+                        app:ms_popup_padding_left="5dp"
+                        app:ms_arrow_tint="@color/colorGreenSpecial"
+                        app:ms_background_color="@color/white"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+
+                        android:hint="@string/org"
+                        android:maxLines="1"
+                        />
+
+                    <!--<com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textILorg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_marginRight="20dp"
-                        android:theme="@style/TextLabel">
+                        android:theme="@style/CustomDropDownTilStyle">
 
                         <AutoCompleteTextView
                             android:id="@+id/actUserorg"
@@ -111,10 +133,11 @@
                             android:layout_marginRight="-4dp"
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusable="false"
+                            android:inputType="none"
                             android:hint="@string/org"
                             android:maxLines="1"
                             android:textColor="@color/colorBlackText" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>-->
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textILother_org"
@@ -130,8 +153,7 @@
                             android:id="@+id/edtUserother_org"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-4dp"
-                            android:layout_marginRight="-4dp"
+
                             android:ems="10"
                             android:hint="@string/org"
                             android:inputType="text"
@@ -141,30 +163,53 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+                        android:id="@+id/spnUsercons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:textColor="@color/colorBlackText"
+                        android:textSize="15sp"
+
+                        android:theme="@style/TextLabel"
+
+                        app:ms_dropdown_height="wrap_content"
+                        app:ms_text_color="@color/colorBlackText"
+                        app:ms_padding_left="5dp"
+                        app:ms_popup_padding_left="5dp"
+                        app:ms_arrow_tint="@color/colorGreenSpecial"
+                        app:ms_background_color="@color/white"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+
+                        android:hint="@string/cons"
+
+                        />
+
+                    <!--<com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textILcons"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="20dp"
-                        android:theme="@style/TextLabel">
+                        >
 
                         <AutoCompleteTextView
                             android:id="@+id/actUsercons"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-4dp"
-                            android:layout_marginRight="-4dp"
+
                             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:focusable="false"
+                            android:inputType="none"
                             android:hint="@string/cons"
                             android:maxLines="1"
                             android:singleLine="true"
                             android:textColor="@color/colorBlackText" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>-->
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textILother_cons"
@@ -180,8 +225,7 @@
                             android:id="@+id/edtUserother_cons"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-4dp"
-                            android:layout_marginRight="-4dp"
+
                             android:ems="10"
                             android:hint="@string/cons"
                             android:inputType="text"
@@ -204,8 +248,7 @@
                             android:id="@+id/edtUserphone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-4dp"
-                            android:layout_marginRight="-4dp"
+
                             android:ems="10"
                             android:hint="@string/fono"
                             android:inputType="phone"
@@ -228,8 +271,7 @@
                             android:id="@+id/edtUserpassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-4dp"
-                            android:layout_marginRight="-4dp"
+
                             android:ems="10"
                             android:hint="Password"
                             android:inputType="textPassword"

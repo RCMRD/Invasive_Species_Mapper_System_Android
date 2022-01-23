@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/comlinee2.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/comlineemain.xml" value="0.160546875" />
         <entry key="app/src/main/res/drawable/diastyle.xml" value="0.2140625" />
+        <entry key="app/src/main/res/drawable/ic_arrow_back_white_24dp.xml" value="0.2140625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/aboutus.xml" value="0.1484375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_map_viewer.xml" value="0.4856348470806302" />
@@ -28,6 +30,7 @@
         <entry key="app/src/main/res/layout/mbaind_nowe2.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/mbaind_sav.xml" value="0.25" />
         <entry key="app/src/main/res/layout/mbaind_sent.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/mbaind_user_missing.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/mbaind_user_saved.xml" value="0.5" />
         <entry key="app/src/main/res/layout/regista.xml" value="0.22" />
         <entry key="app/src/main/res/layout/regista_new.xml" value="0.22" />

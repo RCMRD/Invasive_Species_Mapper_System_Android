@@ -20,6 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.servir.invasivespecies.utils.ApplicationContextor;
 import com.servir.invasivespecies.utils.AsyncTaskCompleteListener;
 import com.servir.invasivespecies.utils.Constantori;
@@ -52,9 +54,10 @@ import androidx.core.content.ContextCompat;
 
 public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListener {
 
-    TextInputLayout Tlogphone, Tlogpass, Tlogorg, Tlogcons, Tlogorg_other, Tlogcons_other;
-    EditText edtPhone, edtPass, edtOrg_other, edtCons_other;
-    AutoCompleteTextView actOrg, actCons;
+    TextInputLayout Tlogphone, Tlogpass, Tlogorg_other, Tlogcons_other; //Tlogorg, Tlogcons
+    EditText edtOrg_other, edtCons_other, edtPhone, edtPass;
+    //AutoCompleteTextView actOrg, actCons;
+    MaterialSpinner spnOrg, spnCons;
     View View;
 
     String dbPhone = "";
@@ -90,6 +93,9 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
     Context context = this;
 
     boolean first_login = true;
+
+    ArrayList<String> orgs_arr = new ArrayList<String>();
+    ArrayList<String> cons_arr = new ArrayList<String>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -128,17 +134,19 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
         Tlogphone = (TextInputLayout)  findViewById(R.id.textILphone);
         Tlogpass = (TextInputLayout)  findViewById(R.id.textILpass);
-        Tlogorg = (TextInputLayout)  findViewById(R.id.textILorg);
+        //Tlogorg = (TextInputLayout)  findViewById(R.id.textILorg);
         Tlogorg_other = (TextInputLayout)  findViewById(R.id.textILother_org);
-        Tlogcons = (TextInputLayout)  findViewById(R.id.textILcons);
+        //Tlogcons = (TextInputLayout)  findViewById(R.id.textILcons);
         Tlogcons_other = (TextInputLayout)  findViewById(R.id.textILother_cons);
         parent_view = findViewById(android.R.id.content);
         logsigninA = (Button) findViewById(R.id.logingia);
         edtPass = (EditText) findViewById(R.id.edtUserpassword);
         edtPhone = (EditText) findViewById(R.id.edtUserphone);
-        actOrg = (AutoCompleteTextView) findViewById(R.id.actUserorg);
+        //actOrg = (AutoCompleteTextView) findViewById(R.id.actUserorg);
+        spnOrg = (MaterialSpinner) findViewById(R.id.spnUserorg);
         edtOrg_other = (EditText) findViewById(R.id.edtUserother_org);
-        actCons = (AutoCompleteTextView) findViewById(R.id.actUsercons);
+        spnCons = (MaterialSpinner) findViewById(R.id.spnUsercons);
+        //actCons = (AutoCompleteTextView) findViewById(R.id.actUsercons);
         edtCons_other = (EditText) findViewById(R.id.edtUserother_cons);
         edtPhone.addTextChangedListener(new MyTextWatcher(Tlogphone));
         edtPass.addTextChangedListener(new MyTextWatcher(Tlogpass));
@@ -332,7 +340,7 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                         locno = allDetails.get(Constantori.KEY_LOCNO);
                         Constantori.setSharedPreference(Constantori.KEY_LOCNO, locno);
                     }
-
+                    
                     Intent intent = new Intent(Loginno.this, MainActivity.class);
                     startActivity(intent);
                 } else if (!strPass.equals(dbPass) && strPhone.equals(dbPhone)) {
@@ -518,7 +526,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
         if (phoneNumber.isEmpty() || !isValidPhone(phoneNumber)) {
             Tlogphone.setError(getString(R.string.err_msg_phone));
-            requestFocus(edtPhone);
             return false;
         } else {
             Tlogphone.setErrorEnabled(false);
@@ -533,7 +540,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
         if (strOrg.isEmpty()) {
             Tlogorg_other.setError(getString(R.string.err_msg_org));
-            requestFocus(edtOrg_other);
             return false;
         } else {
             Tlogorg_other.setErrorEnabled(false);
@@ -548,7 +554,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
         if (strCons.isEmpty()) {
             Tlogcons_other.setError(getString(R.string.err_msg_cons));
-            requestFocus(edtCons_other);
             return false;
         } else {
             Tlogcons_other.setErrorEnabled(false);
@@ -559,16 +564,13 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
     private boolean validate_orgs() {
 
-        strOrg = actOrg.getText().toString().trim();
+        strOrg = orgs_arr.get(spnOrg.getSelectedIndex());
 
-        if (strOrg.equals("SELECT")) {
-            Tlogorg.setError(getString(R.string.err_msg_org_sel));
-            requestFocus(actOrg);
+        if (strOrg.equals(Constantori.SEL_ORG)) {
+            Snackbar.make(parent_view, getResources().getString(R.string.err_msg_org_sel), Snackbar.LENGTH_SHORT).show();
             return false;
-        }else if(strOrg.equals("OTHER")){
+        }else if(strOrg.equals(Constantori.SEL_OTH)){
             validateOther_orgs();
-        } else {
-            Tlogorg.setErrorEnabled(false);
         }
 
         return true;
@@ -576,16 +578,13 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
     private boolean validate_cons() {
 
-        strCons = actCons.getText().toString().trim();
+        strCons = cons_arr.get(spnCons.getSelectedIndex());
 
-        if (strCons.equals("SELECT")) {
-            Tlogcons.setError(getString(R.string.err_msg_cons_sel));
-            requestFocus(actCons);
+        if (strCons.equals(Constantori.SEL_CON)) {
+            Snackbar.make(parent_view, getResources().getString(R.string.err_msg_cons_sel), Snackbar.LENGTH_SHORT).show();
             return false;
-        }else if(strCons.equals("OTHER")){
+        }else if(strCons.equals(Constantori.SEL_OTH)){
             validateOther_cons();
-        } else {
-            Tlogcons.setErrorEnabled(false);
         }
 
         return true;
@@ -594,7 +593,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
     private boolean validatePass() {
         if (edtPass.getText().toString().trim().isEmpty()) {
             Tlogpass.setError(getString(R.string.err_msg_password));
-            requestFocus(edtPass);
             return false;
         } else {
             Tlogpass.setErrorEnabled(false);
@@ -605,12 +603,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
     private static boolean isValidPhone(String phoneN) {
         return !TextUtils.isEmpty(phoneN) && Patterns.PHONE.matcher(phoneN).matches();
-    }
-
-    private void requestFocus(View view) {
-        if (view.requestFocus()) {
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        }
     }
 
 
@@ -648,7 +640,11 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
                             if (Constantori.checkSharedPreference(Constantori.KEY_LOC_INTEGRITY)){
 
+                                Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_X", "1");
+
                                 if(!Constantori.getFromSharedPreference(Constantori.KEY_LOC_INTEGRITY).equals(jsonIntegrity)) {
+
+                                    Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_X", "2");
 
                                     db.resetTable(Constantori.TABLE_LOC, "", "");
                                     JSONArray jsonLOC = receivedResponse.getJSONObject(0).getJSONArray(Constantori.RECEIVED_DATA);
@@ -661,25 +657,17 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
                                     Constantori.setSharedPreference(Constantori.KEY_LOC_INTEGRITY, jsonIntegrity);
 
-                                    if(first_login) {
-                                        finish();
+                                }else{
 
-                                        if(Tlogorg_other.getVisibility() == android.view.View.VISIBLE && Tlogcons_other.getVisibility() == android.view.View.VISIBLE) {
-                                            insertOrgConToDB(strOrg, strCons);
-                                        }else{
-                                            List<HashMap<String, String>> allData = db.GetAllData(Constantori.TABLE_LOC, Constantori.KEY_LOCORG, strOrg);
-                                            HashMap<String, String> allDetails = allData.get(0);
-                                            locno = allDetails.get(Constantori.KEY_LOCNO);
-                                            Constantori.setSharedPreference(Constantori.KEY_LOCNO, locno);
-                                        }
+                                    addOrgs();
 
-                                        Intent intent = new Intent(context, MainActivity.class);
-                                        startActivity(intent);
-                                    }
+                                    Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_5", db.GetAllData(Constantori.TABLE_LOC, "", "").toString());
 
                                 }
 
-                            } else { //new forms
+                            } else {
+
+                                Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_X", "3");
 
                                 db.resetTable(Constantori.TABLE_LOC, "", "");
 
@@ -695,22 +683,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                                 addOrgs();
 
                                 Constantori.setSharedPreference(Constantori.KEY_LOC_INTEGRITY, jsonIntegrity);
-
-                                if(first_login) {
-                                    finish();
-
-                                    if(Tlogorg_other.getVisibility() == android.view.View.VISIBLE && Tlogcons_other.getVisibility() == android.view.View.VISIBLE) {
-                                        insertOrgConToDB(strOrg, strCons);
-                                    }else{
-                                        List<HashMap<String, String>> allData = db.GetAllData(Constantori.TABLE_LOC, Constantori.KEY_LOCORG, strOrg);
-                                        HashMap<String, String> allDetails = allData.get(0);
-                                        locno = allDetails.get(Constantori.KEY_LOCNO);
-                                        Constantori.setSharedPreference(Constantori.KEY_LOCNO, locno);
-                                    }
-
-                                    Intent intent = new Intent(context, MainActivity.class);
-                                    startActivity(intent);
-                                }
 
                             }
 
@@ -893,17 +865,26 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
             case "Initial":
 
+                if(Constantori.isConnectedToInternet()) {
+
+                    try {
+                        JSONArray json = new JSONArray();
+                        JSONObject json_ = new JSONObject();
+                        json_.put(Constantori.DATA_LOCFETCH, Constantori.data_LOCFETCH);
+                        json.put(json_);
+                        new NetPost(context, "loginLoc_PostJSON", json, getResources().getString(R.string.signin_locations), "", "", Loginno.this).execute(new String[]{URL_LINK});
+                    } catch (Exception e) {
+
+                    }
+                }
+
                 addOrgs();
 
-                actOrg.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                spnOrg.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View arg1, int pos,
-                                            long id) {
+                    @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
 
-                        String org = actOrg.getText().toString().trim();
-
-                        if (org.equals("OTHER")){
+                        if (item.equals(Constantori.SEL_OTH)){
                             Tlogorg_other.setVisibility(android.view.View.VISIBLE);
                         }else{
                             edtOrg_other.setText("");
@@ -911,18 +892,15 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                         }
 
                         //populate cons
-                        addCons(org);
+                        addCons(item);
                     }
                 });
 
-                actCons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                spnCons.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View arg1, int pos,
-                                            long id) {
-                        String con = actCons.getText().toString().trim();
+                    @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
 
-                        if (con.equals("OTHER")){
+                        if (item.equals(Constantori.SEL_OTH)){
                             Tlogcons_other.setVisibility(android.view.View.VISIBLE);
                         }else{
                             edtCons_other.setText("");
@@ -946,20 +924,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                         edtPhone.setText(Constantori.getFromSharedPreference(Constantori.KEY_USERTEL));
                         dbPhone = Constantori.getFromSharedPreference(Constantori.KEY_USERTEL);
                         dbPass = Constantori.getFromSharedPreference(Constantori.KEY_USERPASS);
-
-                        if(Constantori.isConnectedToInternet()) {
-
-                            try {
-                                JSONArray json = new JSONArray();
-                                JSONObject json_ = new JSONObject();
-                                json_.put(Constantori.DATA_LOCFETCH, Constantori.data_LOCFETCH);
-                                json.put(json_);
-                                new NetPost(context, "loginLoc_PostJSON", json, getResources().getString(R.string.signin_locations), "", "", Loginno.this).execute(new String[]{URL_LINK});
-                            } catch (Exception e) {
-
-                            }
-                        }
-
                     }
 
 
@@ -1096,9 +1060,10 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
     private void addOrgs(){
 
-        ArrayList<String> orgs_arr = new ArrayList<String>();
+        orgs_arr.clear();
+        cons_arr.clear();
 
-        orgs_arr.add("SELECT");
+        orgs_arr.add(Constantori.SEL_ORG);
 
         List<HashMap<String, String>> allData = db.GetAllData(Constantori.TABLE_LOC, "", "");
 
@@ -1112,21 +1077,25 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
             }
 
-            orgs_arr.add("OTHER");
+            orgs_arr.add(Constantori.SEL_OTH);
 
-            String[] orgs = new String[orgs_arr.size()];
+            String[] orgs = orgs_arr.toArray(new String[0]);
 
-            ArrayAdapter<String> adapterOrgs =
-                    new ArrayAdapter<String>(
-                            this,
-                            R.layout.dropdown_menu_popup_item,
-                            orgs);
+            Log.e(Constantori.APP_ERROR_PREFIX + "_orgs", orgs.toString());
 
-            actOrg.setAdapter(adapterOrgs);
+            spnOrg.setItems(orgs);
         }
+
+        //default
+        cons_arr.add(Constantori.SEL_CON);
+        cons_arr.add(Constantori.SEL_OTH);
+        String[] cons = cons_arr.toArray(new String[0]);
+        spnCons.setItems(cons);
     }
 
     private void addCons(String org){
+
+        cons_arr.clear();
 
         List<HashMap<String, String>> allData = db.GetAllData(Constantori.TABLE_LOC, Constantori.KEY_LOCORG, org);
 
@@ -1137,29 +1106,20 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
             assert strCons != null;
             String[] bareCons = strCons.split(",");
-            List<String> listCons = Arrays.asList(bareCons);
-            listCons.add(0,"SELECT");
-            String[] cons = listCons.toArray(new String[0]);
+            cons_arr = new ArrayList <String> (Arrays.asList(bareCons));
+            cons_arr.add(0,Constantori.SEL_CON);
+            String[] cons = cons_arr.toArray(new String[0]);
 
-            ArrayAdapter<String> adapterCons =
-                    new ArrayAdapter<String>(
-                            this,
-                            R.layout.dropdown_menu_popup_item,
-                            cons);
-
-            actCons.setAdapter(adapterCons);
+            spnCons.setItems(cons);
 
         }else{
 
-            String[] cons = new String[]{"SELECT","OTHER"};
+            cons_arr.add(Constantori.SEL_CON);
+            cons_arr.add(Constantori.SEL_OTH);
 
-            ArrayAdapter<String> adapterCons =
-                    new ArrayAdapter<String>(
-                            this,
-                            R.layout.dropdown_menu_popup_item,
-                            cons);
+            String[] cons = cons_arr.toArray(new String[0]);
 
-            actCons.setAdapter(adapterCons);
+            spnCons.setItems(cons);
 
         }
     }

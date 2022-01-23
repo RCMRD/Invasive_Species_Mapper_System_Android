@@ -287,14 +287,14 @@
     <string name="err_msg_password2">Please make sure the passwords match.</string>
     <string name="err_msg_code">Please use the code sent to your email.</string>
 
-    <string name="signin_details_wrong">Incorrect detail used. Contact the administrator for help.</string>
+    <string name="signin_details_wrong">Incorrect detail used. Contact the administrator (eouko@rcmrd.org) for help.</string>
     <string name="signin_password_wrong">Please use the right password.</string>
-    <string name="signin_userinactive">Please contact the administrator for approval.</string>
-    <string name="signin_usersuspended">Please contact the administrator. Account is suspended.</string>
+    <string name="signin_userinactive">Please contact the administrator (eouko@rcmrd.org) for approval.</string>
+    <string name="signin_usersuspended">Please contact the administrator (eouko@rcmrd.org). Account is suspended.</string>
     <string name="signin_internet_off">Kindly turn on internet to receive updates.</string>
     <string name="signin_fill_all">Please fill in the login detail.</string>
     <string name="signin_setup_ctd">Please wait as setup is done.</string>
-    <string name="signin_dev_error">E434: Please contact the administrator. </string>
+    <string name="signin_dev_error">E434: Please contact the administrator (eouko@rcmrd.org). </string>
     <string name="signin_message">Signing in…</string>
     <string name="signin_locations">Loading Organisations…</string>
     <string name="signin_getcode">Sending code…</string>
@@ -325,5 +325,12 @@
 
     <string name="parcel_loading">Loading…</string>
     <string name="map_enable">Accept to enable map view</string>
+
+    <string name="usavv">User has been successfully registered.</string>
+
+    <string name="msavv">User account is missing. Contact the administrator (eouko@rcmrd.org).</string>
+
+    <string name="code">Security Code</string>
+    <string name="pwad2">Confirm Password</string>
 
 </resources>

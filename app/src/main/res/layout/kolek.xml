@@ -244,14 +244,13 @@
                 android:textSize="16sp" />
 
 
-
             <Spinner
                 android:id="@+id/s31"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi311"
                 android:layout_alignParentStart="@+id/nomi"
-                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:entries="@array/t311"
                 android:prompt="@string/t51" />
 

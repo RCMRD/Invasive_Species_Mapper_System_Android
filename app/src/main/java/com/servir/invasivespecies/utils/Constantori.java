@@ -55,7 +55,7 @@ public class Constantori {
     //DATABASE//////////////////////////////////////////////////////////////
 
     public static final String APP_ERROR_PREFIX = "IS";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "InvSpecDB";
     public static  final Context DATABASE_Context = ApplicationContextor.getAppContext();
 
@@ -131,9 +131,9 @@ public class Constantori {
     public static final String POST_RESPONSEVAL = "success";
     public static final String POST_DATSTATUS = "1";
     public static final String SAVE_DATSTATUS = "0";
-    public static final String LOC_NEW = "New";
-    public static final String LOC_OLD = "Old";
-    public static final String DCOORDINATES = "Location not detected. Please turn on your GPS and retry.";
+    public static final String SEL_ORG = "SELECT ORGANISATION";
+    public static final String SEL_CON = "SELECT CONSERVANCY";
+    public static final String SEL_OTH = "OTHER";
 
     public static final String PAGE_REDIRECT = "i_from";
     public static final String PAGE_REDIRECT_SIGNIN = "i_login";
