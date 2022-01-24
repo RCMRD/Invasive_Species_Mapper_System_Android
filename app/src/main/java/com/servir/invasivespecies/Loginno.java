@@ -294,6 +294,8 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
         if (edtPhone.getText().toString().equals("")
                 || edtPass.getText().toString().equals("")
+                || strCons.equals("")
+                || strOrg.equals("")
         ) {
 
             Snackbar.make(parent_view, getResources().getString(R.string.signin_fill_all), Snackbar.LENGTH_SHORT).show();
@@ -651,7 +653,7 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                                     JSONArray jsonLOC = receivedResponse.getJSONObject(0).getJSONArray(Constantori.RECEIVED_DATA);
                                     db.insertDataToTable(Constantori.TABLE_LOC, jsonLOC);
 
-                                    addOrgs();
+                                    addOrgs(); //locations edited by admin
 
                                     Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_3", db.GetAllData(Constantori.TABLE_LOC, "", "").toString());
                                     Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_4", jsonLOC.toString());
@@ -660,7 +662,7 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
                                 }else{
 
-                                    addOrgs();
+                                    addOrgs(); //load orgs since they are the same - this is only if internet exists, converse should be true
 
                                     Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_5", db.GetAllData(Constantori.TABLE_LOC, "", "").toString());
 
@@ -681,7 +683,7 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
                                 Log.e(Constantori.APP_ERROR_PREFIX + "_JSONLOC_4", jsonLOC.toString());
 
-                                addOrgs();
+                                addOrgs(); //first time login
 
                                 Constantori.setSharedPreference(Constantori.KEY_LOC_INTEGRITY, jsonIntegrity);
 
@@ -756,6 +758,26 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                                 json.put(json_);
                                 new NetPost(context, "loginLoc_PostJSON", json, getResources().getString(R.string.signin_locations), "", "", Loginno.this).execute(new String[]{URL_LINK});
                             }catch(Exception e){
+
+                            }
+
+                            //first login only, if cons and orgs have been selected
+                            if(first_login) {
+
+                                Constantori.setSharedPreference(Constantori.FIRST_LOGIN, "false");
+
+                                if(Tlogorg_other.getVisibility() == android.view.View.VISIBLE && Tlogcons_other.getVisibility() == android.view.View.VISIBLE) {
+                                    insertOrgConToDB(strOrg, strCons);
+                                }else{
+                                    List<HashMap<String, String>> allData = db.GetAllData(Constantori.TABLE_LOC, Constantori.KEY_LOCORG, strOrg);
+                                    HashMap<String, String> allDetails = allData.get(0);
+                                    locno = allDetails.get(Constantori.KEY_LOCNO);
+                                    Constantori.setSharedPreference(Constantori.KEY_LOCNO, locno);
+                                    Constantori.setSharedPreference(Constantori.KEY_LOCCON, strCons);
+                                }
+
+                                Intent intent = new Intent(Loginno.this, MainActivity.class);
+                                startActivity(intent);
 
                             }
 
@@ -877,9 +899,14 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                     } catch (Exception e) {
 
                     }
-                }
+                }else{
 
-                addOrgs();
+                    //there is no internet but we have orgs
+                    if (db.getRowCount(Constantori.TABLE_LOC,"","") > 0) {
+                        addOrgs();
+                    }
+
+                }
 
                 spnOrg.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
@@ -934,6 +961,12 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
                     userstatus = Constantori.USERINACTIVE;
                     usertoken = "";
+
+                }
+
+                if (Constantori.checkSharedPreference(Constantori.FIRST_LOGIN)){
+
+                    first_login = false;
 
                 }
 
@@ -1064,7 +1097,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
     private void addOrgs(){
 
         orgs_arr.clear();
-        cons_arr.clear();
 
         orgs_arr.add(Constantori.SEL_ORG);
 
@@ -1087,13 +1119,11 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
             Log.e(Constantori.APP_ERROR_PREFIX + "_orgs", orgs.toString());
 
             spnOrg.setItems(orgs);
+
+            addCons(orgs_arr.get(spnOrg.getSelectedIndex()));
+
         }
 
-        //default
-        cons_arr.add(Constantori.SEL_CON);
-        cons_arr.add(Constantori.SEL_OTH);
-        String[] cons = cons_arr.toArray(new String[0]);
-        spnCons.setItems(cons);
     }
 
     private void addCons(String org){
@@ -1122,9 +1152,7 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
             cons_arr.add(Constantori.SEL_CON);
             cons_arr.add(Constantori.SEL_OTH);
-
             String[] cons = cons_arr.toArray(new String[0]);
-
             spnCons.setItems(cons);
 
         }

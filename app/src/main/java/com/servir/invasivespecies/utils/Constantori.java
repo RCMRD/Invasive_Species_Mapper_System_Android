@@ -138,6 +138,7 @@ public class Constantori {
     public static final String SEL_CON = "SELECT CONSERVANCY";
     public static final String SEL_OTH = "OTHER";
 
+    public static final String FIRST_LOGIN = "first_login";
     public static final String PAGE_REDIRECT = "i_from";
     public static final String PAGE_REDIRECT_SIGNIN = "i_login";
     public static final String PAGE_REDIRECT_MAIN = "i_main";
