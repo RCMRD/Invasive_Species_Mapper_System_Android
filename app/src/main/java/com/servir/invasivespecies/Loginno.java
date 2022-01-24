@@ -339,6 +339,7 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                         HashMap<String, String> allDetails = allData.get(0);
                         locno = allDetails.get(Constantori.KEY_LOCNO);
                         Constantori.setSharedPreference(Constantori.KEY_LOCNO, locno);
+                        Constantori.setSharedPreference(Constantori.KEY_LOCCON, strCons);
                     }
                     
                     Intent intent = new Intent(Loginno.this, MainActivity.class);

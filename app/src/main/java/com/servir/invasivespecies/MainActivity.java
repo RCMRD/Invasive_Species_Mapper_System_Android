@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
 
-    String[] TextToSwitched = { "...map your world", "...easy visualisation", "...frost mapper", "...convenient system", "...ready information",
+    String[] TextToSwitched = { "...map your world", "...easy visualisation", "...invasive species mapper", "...convenient system", "...ready information",
             "...stay connected", "...access resources" };
 
     int curIndex;
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             public View makeView() {
                 TextView textView = new TextView(context);
                 textView.setTextSize(16);
-                textView.setTextColor(Color.rgb(61,14,6));
+                textView.setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
                 //textView.setGravity(Gravity.CENTER_HORIZONTAL);
                 textView.setTypeface(Typeface.SANS_SERIF, Typeface.ITALIC);
                 // textView.setShadowLayer(10, 10, 10, Color.rgb(255,204,51));
@@ -254,6 +254,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 if (latitude!=0.0 && longitude!=0.0 ){
 
                     Intent intent = new Intent (context, Mapper.class);
+                    intent.putExtra(Constantori.INTENT_LAT, String.valueOf(latitude));
+                    intent.putExtra(Constantori.INTENT_LON, String.valueOf(longitude));
                     startActivity(intent);
 
                 }else{
@@ -298,7 +300,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                                     JSONArray saved_location_data = db.PostDataArray_Alldata(Constantori.TABLE_LOC, Constantori.KEY_LOCNO, locno);
 
                                     saved_data_single.put(Constantori.KEY_LOCORG, saved_location_data.getJSONObject(0).getString(Constantori.KEY_LOCORG));
-                                    saved_data_single.put(Constantori.KEY_LOCCON, saved_location_data.getJSONObject(0).getString(Constantori.KEY_LOCCON));
+
+                                    saved_data_single.put(Constantori.KEY_LOCCON, Constantori.getFromSharedPreference(Constantori.KEY_LOCCON));
 
                                     final_array.put(saved_data_single);
 
@@ -316,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
                         }
 
-                        if(db.getRowCount(Constantori.TABLE_PIC, Constantori.KEY_SENDSTAT,Constantori.POST_DATSTATUS) > 0){
+                        if(db.getRowCount(Constantori.TABLE_PIC, Constantori.KEY_SENDSTAT,Constantori.SAVE_DATSTATUS) > 0){
 
                             SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss", java.util.Locale.getDefault());
                             zipfilo = userRef + "_" + dateFormat.format(new Date()) + ".zip";
@@ -637,16 +640,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         }
     }
 
-
-
-
-
     private void lapica(){
 
         storapic.clear();
-        if (db.getRowCount(Constantori.TABLE_PIC,"","") > 0) {
 
-            List<HashMap<String, String>> picList = db.GetAllData(Constantori.TABLE_PIC, "", "");
+        if (db.getRowCount(Constantori.TABLE_PIC,Constantori.KEY_SENDSTAT,Constantori.SAVE_DATSTATUS) > 0) {
+
+            List<HashMap<String, String>> picList = db.GetAllData(Constantori.TABLE_PIC, Constantori.KEY_SENDSTAT,Constantori.SAVE_DATSTATUS);
 
             for (HashMap<String, String> picData: picList){
 
@@ -670,14 +670,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
                 storapic.add(picopk);
 
-
-
             }
 
         }
 
 
-        File myDir = new File(Constantori.folderImages,zipfilo);
+        File myDir = new File(Constantori.getFolderImages().getAbsolutePath(),zipfilo);
         if (!myDir.exists()) {
             myDir.getParentFile().mkdirs();
         }else{
@@ -688,46 +686,46 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         try  {
 
-            Log.e("Progress", "1");
+            Log.e(Constantori.APP_ERROR_PREFIX +"_Zip" , "1");
             BufferedInputStream origin = null;
-            Log.e("Progress", "2");
+            Log.e(Constantori.APP_ERROR_PREFIX +"_Zip" , "2");
             FileOutputStream dest = new FileOutputStream(zippath);
-            Log.e("Progress", "3");
+            Log.e(Constantori.APP_ERROR_PREFIX +"_Zip" , "3");
             ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
-            Log.e("Progress", "4");
+            Log.e(Constantori.APP_ERROR_PREFIX +"_Zip" , "4");
             byte data[] = new byte[2048];
-            Log.e("Progress", "6");
+            Log.e(Constantori.APP_ERROR_PREFIX +"_Zip" , "6");
             for(int i=0; i < storapic.size(); i++) {
                 //Log.e("Compress", "Adding: " + storapic.get(i));
-                Log.e("ProgressR", storapic.get(i));
+                Log.e(Constantori.APP_ERROR_PREFIX +"_ZipR", storapic.get(i));
                 //File ioso = new File(storapic.get(i));
                 //ioso.setReadable(true);
                 FileInputStream fi = new FileInputStream(storapic.get(i));
-                Log.e("ProgressR", "72");
+                Log.e(Constantori.APP_ERROR_PREFIX +"_ZipR", "72");
                 origin = new BufferedInputStream(fi, 2048);
-                Log.e("ProgressR", "73");
+                Log.e(Constantori.APP_ERROR_PREFIX +"_ZipR", "73");
                 ZipEntry entry = new ZipEntry(storapic.get(i).substring(storapic.get(i).lastIndexOf("/") + 1));
-                Log.e("ProgressR", "74");
+                Log.e(Constantori.APP_ERROR_PREFIX +"_ZipR", "74");
                 out.putNextEntry(entry);
-                Log.e("ProgressR", "75");
+                Log.e(Constantori.APP_ERROR_PREFIX +"_ZipR", "75");
                 int count;
                 while ((count = origin.read(data, 0, 2048)) != -1) {
-                    Log.e("ProgressR", "81");
+                    Log.e(Constantori.APP_ERROR_PREFIX +"_ZipR", "81");
                     out.write(data, 0, count);
                 }
-                Log.e("ProgressR", "82");
+                Log.e(Constantori.APP_ERROR_PREFIX +"_ZipR", "82");
                 origin.close();
             }
 
             out.close();
 
-            Log.e("Progress", "9");
+            Log.e(Constantori.APP_ERROR_PREFIX +"_Zip" , "9");
             String encodeFileToBase64Binary = encodeFileToBase64Binary(myDir);
-            Log.e("Progress", "10");
+            Log.e(Constantori.APP_ERROR_PREFIX +"_Zip", "10");
             lefile = encodeFileToBase64Binary;
 
         } catch(Exception e) {
-            Log.e(" error ---- ", "exception", e);
+            Log.e(Constantori.APP_ERROR_PREFIX +"_ZipError", "exception", e);
             //Toast.makeText(context,"Image(s) not found at this time." ,Toast.LENGTH_LONG).show();
         }
     }
@@ -737,12 +735,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         FileInputStream fileInputStream=null;
 
-
         byte[] bFile = new byte[(int) fileName.length()];
 
         try {
             //convert file into array of bytes
-
             fileInputStream = new FileInputStream(fileName);
             fileInputStream.read(bFile);
             fileInputStream.close();
@@ -808,7 +804,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 }else if (result.contains("inflating")){
 
                     Log.e(Constantori.APP_ERROR_PREFIX + "_mainJSON3", "Images Sent");
-                    db.resetTable(Constantori.TABLE_PIC,Constantori.KEY_SENDSTAT,Constantori.POST_DATSTATUS);
+                    db.resetTable(Constantori.TABLE_PIC,Constantori.KEY_SENDSTAT,Constantori.SAVE_DATSTATUS);
 
                 }
 

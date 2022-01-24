@@ -3,6 +3,7 @@ package com.servir.invasivespecies;
 import android.Manifest;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,8 +59,8 @@ public class Collecta extends AppCompatActivity {
     String datno, locno;
     String s002, s004, s006, s007, s008, s031, s0313, s005, s02x, s04x;
     RadioGroup rsettle;
-    Spinner	s6,s3, s31, s312, s313, s33s;
-    EditText s2, s4, s7, s8, s87, s8s;
+    Spinner	s3, s31, s312, s313, s33s;
+    EditText s2, s7, s8, s87, s8s;
     RadioButton neww, prevv, newws, prevvs;
 
     String s003 = "SELECT";
@@ -102,8 +103,8 @@ public class Collecta extends AppCompatActivity {
         setContentView(R.layout.kolek);
         overridePendingTransition(0,0);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
         if (Build.VERSION.SDK_INT < 23) {
 
@@ -117,7 +118,6 @@ public class Collecta extends AppCompatActivity {
         rsettle = (RadioGroup) findViewById(R.id.radiops2s);
 
         s1= (TextView) findViewById (R.id.s1);
-        s6= (Spinner) findViewById (R.id.s6);
         s3= (Spinner) findViewById (R.id.s3);
         s31= (Spinner) findViewById (R.id.s31);
         s312= (Spinner) findViewById (R.id.s312);
@@ -125,7 +125,6 @@ public class Collecta extends AppCompatActivity {
         s33s= (Spinner) findViewById (R.id.s33s);
 
         s2= (EditText) findViewById (R.id.s2);
-        s4= (EditText) findViewById (R.id.s4);
         s7= (EditText) findViewById (R.id.s7);
         s8= (EditText) findViewById (R.id.s8);
         s8s= (EditText) findViewById (R.id.s8s);
@@ -262,7 +261,7 @@ public class Collecta extends AppCompatActivity {
 
             public void onClick(View view){
 
-                pathGeneral = Constantori.folderImages;
+                pathGeneral = Constantori.getFolderImages();
 
                 picnm = datno + photosuffix;
 
@@ -272,9 +271,9 @@ public class Collecta extends AppCompatActivity {
 
                     if (
                             ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                                    ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED &&
-                                    ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
-                                    ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
+                            ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED &&
+                            ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                            ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
 
                     ) {
 
@@ -455,6 +454,18 @@ public class Collecta extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
+                File[] tempFiles = Constantori.getFolderImages().listFiles(new FilenameFilter() {
+                    public boolean accept(File dir, String name) {
+                        return name.startsWith("temp");
+                    }
+                });
+
+                for (File file : tempFiles) {
+                    if (file.exists()){
+                        file.delete();
+                    }
+                }
+
                 finish();
 
                 Intent intent = new Intent (context, MainActivity.class);
@@ -469,9 +480,9 @@ public class Collecta extends AppCompatActivity {
 
     private void saveImage(Bitmap finalBitmap) {
 
-        Log.e(Constantori.APP_ERROR_PREFIX+"_CollectPics",pathGeneral + " : " + picnm);
+        Log.e(Constantori.APP_ERROR_PREFIX+"_CollectPics",pathGeneral.getAbsolutePath() + " : " + picnm);
 
-        File file = new File(pathGeneral, picnm);
+        File file = new File(pathGeneral.getAbsolutePath(), picnm);
 
         if (file.exists()) {
             file.delete();
@@ -491,6 +502,8 @@ public class Collecta extends AppCompatActivity {
                 sceneimage.setImageBitmap(bitmap);
                 lepicpath = file.getAbsolutePath();
 
+                Log.e(Constantori.APP_ERROR_PREFIX+"_CollectPics",lepicpath);
+
                 ExifInterface exif = new ExifInterface(lepicpath);
                 exif.setAttribute(ExifInterface.TAG_GPS_LATITUDE,s_Lat);
                 exif.setAttribute(ExifInterface.TAG_GPS_LONGITUDE, s_Lon);
@@ -502,8 +515,8 @@ public class Collecta extends AppCompatActivity {
 
         }
         catch (Exception e) {
-            Toast.makeText(context, "Camera error, take photograph again.", Toast.LENGTH_LONG ).show();
-            e.printStackTrace();
+            //Toast.makeText(context, "Camera error, take photograph again.", Toast.LENGTH_LONG ).show();
+            Log.e(Constantori.APP_ERROR_PREFIX+"_CollectPicsError","Error", e);
         }
 
         // Tell the media scanner about the new file so that it is
@@ -535,13 +548,6 @@ public class Collecta extends AppCompatActivity {
                     "Description");
 
             saveImage(bitmap);
-
-            String root2 = getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/";
-            File myDir2 = new File(root2);
-            File file2 = new File(myDir2, "temp.jpg");
-            if (file2.exists()){
-                file2.delete();
-            }
 
         }
 

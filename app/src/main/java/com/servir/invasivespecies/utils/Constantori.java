@@ -11,6 +11,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Environment;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -58,6 +59,7 @@ public class Constantori {
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "InvSpecDB";
     public static  final Context DATABASE_Context = ApplicationContextor.getAppContext();
+    public static  final Context APP_Context = ApplicationContextor.getAppContext();
 
     //Tables
     public static final String TABLE_LOC = "locTBL";
@@ -115,6 +117,7 @@ public class Constantori {
     public static final String KEY_DATCOM = "_datcom";
     public static final String KEY_DATSTATUS = "_datstatus";
     public static final String KEY_DATINDEX = "_datindex";
+    public static final String KEY_DATTYM = "_dattym"; //from server
 
     //Fields - Pic table
     public static final String KEY_USERPIC = "_userpic";
@@ -242,15 +245,49 @@ public class Constantori {
     public static final String ALL_FOLDER = "ISMS";
     public static final String PIC_PATH = "Images";
 
-    public static File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +
-            File.separator + Constantori.ALL_FOLDER);
 
-    public static File folderImages = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + File.separator +  folder.getAbsolutePath() +
-            File.separator + Constantori.PIC_PATH);
+    public static File getFolder() {
+
+        File folder;
+
+        if (Build.VERSION.SDK_INT >= 30) {
+
+            folder = new File(APP_Context.getExternalFilesDir(null),Constantori.PIC_PATH); //we are in the app-specific folder
+
+        } else {
+            folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                    File.separator + Constantori.ALL_FOLDER);
+
+        }
+
+        return folder;
+
+    }
+
+    public static File getFolderImages() {
+
+        File folderImages;
+
+        if (Build.VERSION.SDK_INT >= 30) {
+
+            folderImages = new File(APP_Context.getExternalFilesDir(null), Constantori.PIC_PATH); //we are in the app-specific folder
+
+        } else {
+
+            folderImages = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                    File.separator + Constantori.ALL_FOLDER + File.separator + Constantori.PIC_PATH);
+
+        }
+
+        return folderImages;
+
+    }
 
     public static boolean createAllFolders() {
 
         boolean isCreated = false;
+        File folder = Constantori.getFolder();
+        File folderImages = Constantori.getFolderImages();
 
         if (Constantori.isExternalStorageWritable()) {
 

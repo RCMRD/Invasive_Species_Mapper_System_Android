@@ -33,7 +33,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="3dp"
+            android:layout_marginEnd="5dp"
             android:orientation="vertical"
             >
 
@@ -50,12 +50,12 @@
                 android:id="@+id/s1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="#000000"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/nomi"
                 android:text="Invasive Species"
+                android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="italic"
-                android:layout_toRightOf="@+id/nomi"
 
                 />
 
@@ -66,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:enabled="false"
+                android:layout_marginTop="5dp"
                 android:visibility="gone"
                 android:singleLine="true"
                 android:hint="@string/s8a"
@@ -77,33 +78,8 @@
 
 
             <TextView
-                android:id="@+id/nosrf"
-                android:layout_below="@+id/s87"
-                android:layout_width="wrap_content"
-                android:layout_alignParentStart="@+id/nomi"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:textColor="#000000"
-                android:text="@string/t10"
-                android:textSize="16sp" />
-
-            <Spinner
-                android:id="@+id/s6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                style="@style/Widget.AppCompat.Spinner.Underlined"
-                android:visibility="gone"
-                android:layout_below="@+id/nosrf"
-                android:layout_alignParentStart="true"
-                android:entries="@array/t11"
-                android:prompt="@string/t10" />
-
-
-            <TextView
                 android:id="@+id/nomi30"
-                android:layout_below="@+id/s6"
+                android:layout_below="@+id/s87"
                 android:layout_width="wrap_content"
                 android:layout_alignParentStart="@+id/nomi"
                 android:layout_height="wrap_content"
@@ -119,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi30"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:weightSum="1"
                 android:layout_alignParentStart="@+id/nomi"
                 >
@@ -133,15 +109,6 @@
                     android:singleLine="true"
                     android:hint="@string/t4"
                     />
-
-                <!-- <Spinner
-                    android:id="@+id/s2x"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/t644"
-                     style="@style/Widget.AppCompat.Spinner.Underlined"
-                    android:layout_weight="0.6"
-                    android:prompt="@string/tunit" />-->
 
                 <TextView
                     android:id="@+id/s2xtx"
@@ -157,63 +124,8 @@
 
 
             <TextView
-                android:id="@+id/nomi32"
-                android:layout_below="@+id/s2q"
-                android:layout_width="wrap_content"
-                android:layout_alignParentStart="@+id/nomi"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:textColor="#000000"
-                android:text="@string/t6"
-                android:textSize="16sp" />
-
-
-            <LinearLayout
-                android:id="@+id/s2q1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_below="@+id/nomi32"
-                android:layout_marginTop="3dp"
-                android:weightSum="1"
-                android:layout_alignParentStart="@+id/nomi"
-                >
-
-                <EditText
-                    android:id="@+id/s4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="0.4"
-                    android:singleLine="true"
-                    android:hint="@string/t6"
-                    />
-
-
-                <!--<Spinner
-                    android:id="@+id/s4x"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/t644"
-                    android:layout_weight="0.6"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
-                    android:prompt="@string/tunit" />-->
-
-                <TextView
-                    android:id="@+id/s4xtx"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:textColor="#000000"
-                    android:text="Square Metres"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <TextView
                 android:id="@+id/nomi31"
-                android:layout_below="@+id/s2q1"
+                android:layout_below="@+id/s2q"
                 android:layout_width="wrap_content"
                 android:layout_alignParentStart="@+id/nomi"
                 android:layout_height="wrap_content"
@@ -230,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi31"
                 android:layout_alignParentStart="@+id/nomi"
+                android:layout_marginTop="5dp"
                 android:prompt="@string/t5" /><!-- android:entries="@array/t31"-->
 
             <TextView
@@ -250,6 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi311"
+                android:layout_marginTop="5dp"
                 android:layout_alignParentStart="@+id/nomi"
                 android:entries="@array/t311"
                 android:prompt="@string/t51" />
@@ -260,7 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/s31"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:layout_alignParentStart="@+id/nomi"
                 android:inputType="text"
                 android:enabled="false"
@@ -289,6 +203,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi312"
+                android:layout_marginTop="5dp"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_alignParentStart="@+id/nomi"
                 android:prompt="@string/t52" /><!--android:entries="@array/t312"-->
@@ -311,6 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi313"
+                android:layout_marginTop="5dp"
                 android:layout_alignParentStart="@+id/nomi"
                 android:entries="@array/t313"
                 android:prompt="@string/t53" />
@@ -333,7 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi33"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -379,7 +295,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nomi33s"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -452,7 +368,7 @@
                 android:layout_height="90dp"
                 android:layout_below="@+id/nomi31e"
                 android:layout_alignParentStart="@+id/nomi"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="1dp"
                 android:background="@drawable/comline"
                 android:gravity="top"

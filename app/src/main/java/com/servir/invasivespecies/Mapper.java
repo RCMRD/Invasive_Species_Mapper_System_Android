@@ -66,6 +66,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -129,13 +130,9 @@ import org.json.JSONObject;
         backo = (Button) findViewById(R.id.btn_back);
         parent_view = findViewById(android.R.id.content);
 
-        if(!Constantori.getFromSharedPreference(Constantori.KEY_USERCNTRYCODE).equals("GH")) {
-            if (!Constantori.isgpsa(this)) {
-                Snackbar.make(parent_view, getResources().getString(R.string.general_googleplay), Snackbar.LENGTH_SHORT).show();
-            }
+        if (!Constantori.isgpsa(this)) {
+            Snackbar.make(parent_view, getResources().getString(R.string.general_googleplay), Snackbar.LENGTH_SHORT).show();
         }
-
-
 
         URL_LINKS = Constantori.getURLs(Constantori.getFromSharedPreference(Constantori.KEY_USERCNTRYCODE));
         URL_LINK = URL_LINKS.get(0);
@@ -588,8 +585,35 @@ import org.json.JSONObject;
     private void addGeoJsonLayerToMap(GeoJsonLayer layer) {
 
         //addColorsToMarkers(layer);
+
         //layer.addLayerToMap();
 
+
+        // Demonstrate receiving features via GeoJsonLayer clicks.
+        /*layer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
+            @Override
+            public void onFeatureClick(Feature feature) {
+
+                String id = feature.getProperty(Constantori.KEY_DATNO);
+                *//*String snippet_1 = id.split("_")[1];
+                String snippet_2 = id.split("_")[2];
+
+                String snippet = "";
+                if(Constantori.isNumeric(snippet_2)){
+                    snippet = snippet_1;
+                }else{
+                    snippet = snippet_1 + " " + snippet_2;
+                }*//*
+
+                String sppname = feature.getProperty(Constantori.KEY_DATFTRNAME);
+                String dattym = feature.getProperty(Constantori.KEY_DATTYM);
+
+                Toast.makeText(Mapper.this,
+                        String.format("Species Type: %s \n Collector: %s \n Date: %s", sppname,  dattym), //snippet,
+                        Toast.LENGTH_LONG).show();
+            }
+
+        });*/
 
         for (GeoJsonFeature feature : layer.getFeatures()) {
 
@@ -616,32 +640,9 @@ import org.json.JSONObject;
 
             addMapDataItems(lat,lon,sppname,snippet);
 
-            //Log.e(Constantori.APP_ERROR_PREFIX+"_Layer_Coords", coords_alone.substring(1,coords_alone.length()-1));
+            Log.e(Constantori.APP_ERROR_PREFIX+"_Map_Coords", coords_alone.substring(1,coords_alone.length()-1));
 
         }
-
-
-        /*
-        // Demonstrate receiving features via GeoJsonLayer clicks.
-        layer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
-            @Override
-            public void onFeatureClick(Feature feature) {
-
-                //String[] dateInStringAr = feature.getProperty("_date").split("_");
-                //List<String> dateList = Arrays.asList(dateInStringAr);
-                //String date = dateList.get(2) + "-" + dateList.get(1) + "-" + dateList.get(0);
-
-                String id = feature.getProperty(Constantori.KEY_SURVEYJSON_ID);
-                List<HashMap<String, String>> alldata_ = db.GetAllData(Constantori.TABLE_SURVEYJSONS, Constantori.KEY_SURVEYJSON_ID, id);
-                String name = alldata_.get(0).get(Constantori.KEY_SURVEYJSON_NAME);
-
-                Snackbar.make(parent_view, String.format("SURVEY TITLE: %s \n  USER ID: %s \n RECORD ID: %s \n COMPLETED AT:  %s \n STATUS: %s", name,feature.getProperty(Constantori.KEY_SURVEY_USER),feature.getProperty(Constantori.KEY_SURVEY_RECORD_ID), feature.getProperty(Constantori.KEY_SURVEY_COMPLETED), feature.getProperty(Constantori.KEY_SURVEY_STATUS)), Snackbar.LENGTH_SHORT).show();
-
-            }
-
-        });
-
-         */
 
     }
 

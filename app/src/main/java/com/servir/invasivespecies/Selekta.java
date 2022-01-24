@@ -31,7 +31,6 @@ public class Selekta extends AppCompatActivity {
 		overridePendingTransition(0, 0);
 
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
-		getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
 		btnSelect = (Button) findViewById(R.id.selecto);
@@ -288,7 +287,7 @@ public class Selekta extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
-				im10.setBackground(highlight);
+				im11.setBackground(highlight);
 				im2.setBackground(null);
 				im3.setBackground(null);
 				im4.setBackground(null);
@@ -311,7 +310,7 @@ public class Selekta extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
-				im10.setBackground(highlight);
+				im12.setBackground(highlight);
 				im2.setBackground(null);
 				im3.setBackground(null);
 				im4.setBackground(null);
@@ -334,7 +333,7 @@ public class Selekta extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
-				im10.setBackground(highlight);
+				im13.setBackground(highlight);
 				im2.setBackground(null);
 				im3.setBackground(null);
 				im4.setBackground(null);
@@ -357,7 +356,7 @@ public class Selekta extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Drawable highlight = getResources().getDrawable(R.drawable.highlighta);
-				im10.setBackground(highlight);
+				im14.setBackground(highlight);
 				im2.setBackground(null);
 				im3.setBackground(null);
 				im4.setBackground(null);
