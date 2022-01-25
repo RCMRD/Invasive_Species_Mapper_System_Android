@@ -54,9 +54,8 @@ import androidx.core.content.ContextCompat;
 
 public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListener {
 
-    TextInputLayout Tlogphone, Tlogpass, Tlogorg_other, Tlogcons_other; //Tlogorg, Tlogcons
+    TextInputLayout Tlogphone, Tlogpass, Tlogorg_other, Tlogcons_other;
     EditText edtOrg_other, edtCons_other, edtPhone, edtPass;
-    //AutoCompleteTextView actOrg, actCons;
     MaterialSpinner spnOrg, spnCons;
     View View;
 
@@ -134,19 +133,15 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
 
         Tlogphone = (TextInputLayout)  findViewById(R.id.textILphone);
         Tlogpass = (TextInputLayout)  findViewById(R.id.textILpass);
-        //Tlogorg = (TextInputLayout)  findViewById(R.id.textILorg);
         Tlogorg_other = (TextInputLayout)  findViewById(R.id.textILother_org);
-        //Tlogcons = (TextInputLayout)  findViewById(R.id.textILcons);
         Tlogcons_other = (TextInputLayout)  findViewById(R.id.textILother_cons);
         parent_view = findViewById(android.R.id.content);
         logsigninA = (Button) findViewById(R.id.logingia);
         edtPass = (EditText) findViewById(R.id.edtUserpassword);
         edtPhone = (EditText) findViewById(R.id.edtUserphone);
-        //actOrg = (AutoCompleteTextView) findViewById(R.id.actUserorg);
         spnOrg = (MaterialSpinner) findViewById(R.id.spnUserorg);
         edtOrg_other = (EditText) findViewById(R.id.edtUserother_org);
         spnCons = (MaterialSpinner) findViewById(R.id.spnUsercons);
-        //actCons = (AutoCompleteTextView) findViewById(R.id.actUsercons);
         edtCons_other = (EditText) findViewById(R.id.edtUserother_cons);
         edtPhone.addTextChangedListener(new MyTextWatcher(Tlogphone));
         edtPass.addTextChangedListener(new MyTextWatcher(Tlogpass));
@@ -1063,6 +1058,8 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                             }catch(Exception e){
 
                             }
+
+                            Constantori.setSharedPreference(Constantori.KEY_USERPASS, pass);
 
                             mbott.dismiss();
 
