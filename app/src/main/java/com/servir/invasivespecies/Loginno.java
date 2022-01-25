@@ -1060,6 +1060,7 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                             }
 
                             Constantori.setSharedPreference(Constantori.KEY_USERPASS, pass);
+                            doDBstuff("Initial");
 
                             mbott.dismiss();
 
