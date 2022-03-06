@@ -18,7 +18,7 @@ android {
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.servir.invasivespecies"
-        minSdkVersion 24
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 13
         versionName "ISMS_13_25012022"

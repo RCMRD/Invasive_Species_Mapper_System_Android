@@ -301,17 +301,6 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
             strPass = edtPass.getText().toString().trim();
             strPhone = edtPhone.getText().toString().trim();
 
-            if (db.CheckIsDataAlreadyInDBorNot(Constantori.TABLE_LOC, Constantori.KEY_LOCCON, strCons)) {
-
-
-
-
-            }else{
-                //add the conservancy
-
-
-            }
-
             if (userstatus.equals(Constantori.USERINACTIVE)){
 
                 try {
@@ -343,7 +332,20 @@ public class Loginno extends AppCompatActivity implements AsyncTaskCompleteListe
                     startActivity(intent);
                 } else if (!strPass.equals(dbPass) && strPhone.equals(dbPhone)) {
                     Snackbar.make(parent_view, getResources().getString(R.string.signin_password_wrong), Snackbar.LENGTH_SHORT).show();
-                } else {
+                } else if(!strPass.equals(dbPass) && !strPhone.equals(dbPhone)) {
+
+                    try {
+                        JSONArray json = new JSONArray();
+                        JSONObject json_ = new JSONObject();
+                        json_.put(Constantori.KEY_USERTEL, strPhone);
+                        json_.put(Constantori.KEY_USERPASS, strPass);
+                        json.put(json_);
+                        new NetPost(context, "login_CheckJSON", json, getResources().getString(R.string.signin_message), "", "", Loginno.this).execute(new String[]{URL_LINK});
+                    }catch(Exception e){
+
+                    }
+
+                }else{
                     Snackbar.make(parent_view, getResources().getString(R.string.signin_details_wrong), Snackbar.LENGTH_SHORT).show();
                 }
 
