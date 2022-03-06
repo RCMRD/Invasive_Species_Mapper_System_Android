@@ -20,8 +20,8 @@ android {
         applicationId "com.servir.invasivespecies"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 13
-        versionName "ISMS_13_25012022"
+        versionCode 14
+        versionName "ISMS_14_06032022"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
